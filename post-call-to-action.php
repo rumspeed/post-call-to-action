@@ -21,3 +21,64 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 //include_once( 'includes/settings.php' );
 //include_once( 'includes/display-functions.php' );
 
+/* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
+
+function rum_post_cta_menu() {
+	/*
+	 * use the add_options_page function
+	 * add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
+	 *
+	 */
+	
+	add_options_page(
+		'Post Call to Action',
+		'Post CTA',
+		'manage_options',
+		'rum-post-cta',
+		'rum_post_cta_options_page'
+	);
+
+}
+
+add_action( 'admin_menu', 'rum_post_cta_menu' );
+
+
+function rum_post_cta_options_page() {
+
+	if( !current_user_can( 'manage_options' ) ) {
+		wp_die( 'You do not sufficient permission to access this page.' );
+	}
+
+	require( 'includes/options-page-wrapper.php' );
+
+}
+
+/* ----- load admin functions if in the backend ----- */
+	
+	// if ( is_admin() ) {
+	
+	// 	require_once( 'includes/rum-post-cta-admin.php' );
+	
+	// }
+
+/* ----- insert CTA box below content ----- */
+
+function rum_post_cta_box( $content ) {
+	/*
+	 * Checks to make sure code executes only on
+	 * singles pages and inside of the main Loop
+	 *
+	 */
+
+	 if( is_singular() && is_main_query() ) {
+
+	 	$post_cta_box = 'Insert the CTA box here';
+	 	$content .= $new_content;
+
+	 }
+	 return $content;
+}
+
+add_filter( ' the_content', 'rum_post_cta_box' );
+
+?>
