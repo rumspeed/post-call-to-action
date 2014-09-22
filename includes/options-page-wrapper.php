@@ -53,11 +53,11 @@
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Background Color</label></td>
-									<td class="color-field">Background Color</td>
+									<td class="color-field"><input type="text" value="#bada55" class="my-color-field" data-default-color="#effeff"/></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Text Color</label></td>
-									<td class="color-field">Text Color</td>
+									<td class="color-field"><input type="text" value="#bada55" class="my-color-field" data-default-color="#effeff" /></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Button Style</label></td>
@@ -106,6 +106,13 @@
 		</div> <!-- #post-body .metabox-holder .columns-2 -->
 		
 		<br class="clear">
+
+		<form action="options.php" method="post">
+			<?php settings_fields('plugin_options'); ?>
+			<?php do_settings_sections('plugin'); ?>
+
+			<input class="button" name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
+		</form>
 	</div> <!-- #poststuff -->
 	
 </div> <!-- .wrap -->

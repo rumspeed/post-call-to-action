@@ -76,15 +76,15 @@ add_filter( ' the_content', 'rum_post_cta_box' );
 /* ----- add color picker ----- */
 
 add_action( 'admin_enqueue_scripts', 'rum_add_color_picker' );
-function rum_add_color_picker( $hook ) {
- 
-    if( is_admin() ) { 
+function rum_add_color_picker( $hook_suffix ) {
+
+    if( is_admin() ) {
      
         // Add the color picker css file       
         wp_enqueue_style( 'wp-color-picker' ); 
          
         // Include our custom jQuery file with WordPress Color Picker dependency
-        wp_enqueue_script( 'custom-script-handle', plugins_url( 'jquery.custom.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+        wp_enqueue_script( 'rum-script-handle', plugins_url( 'jquery.custom.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
     }
 }
 
