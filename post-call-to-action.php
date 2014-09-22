@@ -2,7 +2,7 @@
 /*
 Plugin Name: Post Call to Action
 Description: Every page should do something. Display a call to action bar below each blog post.
-Version: 0.1.0
+Version: 0.2.0
 Author: Scot Rumery
 Author URI: http://rumspeed.com/scot-rumery/
 */
