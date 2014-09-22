@@ -2,11 +2,11 @@
 	
 	<div id="icon-options-general" class="icon32"></div>
 	<h2>Post Call to Action</h2>
-	<p>Creat a relationship from a blog post to another post type for displaying a call-to-action at the bottom
+	<p>Create a relationship from a blog post to another post type for displaying a call-to-action at the bottom
 	of each post. Pick a post type to use an a metabox will appear in the post editor with available posts.
 	Use for services, portfolios, and even standard pages. Below are the style and option settings related to
 	this feature.</p>
-	
+
 	<div id="poststuff">
 	
 		<div id="post-body" class="metabox-holder columns-2">
@@ -40,7 +40,7 @@
 										<option value="">Products</option>
 										<option value="">Portfolio</option>
 										<option value="">Staff</option>
-									</select>Table Cell #</td>
+									</select></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Display Featured Image</label></td>
@@ -53,11 +53,11 @@
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Background Color</label></td>
-									<td>Table Cell #6</td>
+									<td class="color-field">Background Color</td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Text Color</label></td>
-									<td>Table Cell #6</td>
+									<td class="color-field">Text Color</td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Button Style</label></td>
@@ -91,7 +91,7 @@
 						<h3><span>About This Plugin</span></h3>
 						<div class="inside">
 							<p>This plugin is brought to you by <a href="http://rumspeed.com/">Rumspeed</a>.</p>
-							<p>Creat a relationship from a blog post to another post type for displaying a call-to-action at the bottom
+							<p>Create a relationship from a blog post to another post type for displaying a call-to-action at the bottom
 							of each post. Pick a post type to use an a metabox will appear in the post editor with available posts.
 							Use for services, portfolios, and even standard pages. Below are the style and option settings related to
 							this feature.</p>

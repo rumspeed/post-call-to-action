@@ -7,15 +7,9 @@ Author: Scot Rumery
 Author URI: http://rumspeed.com/scot-rumery/
 */
 
-
-
-
 define( 'RUM_POST_CTA_PLUGIN_VERSION', '0.1.0' );
 define( 'RUM_POST_CTA_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
-
-
-
 
 // include files - these are simply to organize functions into logical areas
 //include_once( 'includes/settings.php' );
@@ -57,8 +51,6 @@ function rum_post_cta_options_page() {
 	
 	// if ( is_admin() ) {
 	
-	// 	require_once( 'includes/rum-post-cta-admin.php' );
-	
 	// }
 
 /* ----- insert CTA box below content ----- */
@@ -81,4 +73,18 @@ function rum_post_cta_box( $content ) {
 
 add_filter( ' the_content', 'rum_post_cta_box' );
 
-?>
+/* ----- add color picker ----- */
+
+add_action( 'admin_enqueue_scripts', 'rum_add_color_picker' );
+function rum_add_color_picker( $hook ) {
+ 
+    if( is_admin() ) { 
+     
+        // Add the color picker css file       
+        wp_enqueue_style( 'wp-color-picker' ); 
+         
+        // Include our custom jQuery file with WordPress Color Picker dependency
+        wp_enqueue_script( 'custom-script-handle', plugins_url( 'jquery.custom.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+    }
+}
+
