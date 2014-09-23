@@ -17,12 +17,13 @@
 				<div class="meta-box-sortables ui-sortable">
 					
 					<div class="postbox">
+					<form method="post" action="options.php">
 					
 						<h3><span><?php echo __( 'Options' ); ?></span></h3>
 						<div class="inside">
 							<table class="form-table">
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Activate "Post Call-to-Action"' ); ?></label></td>
+									<td scope="row"><label for="activate_post_call_to_action"><?php echo __( 'Activate "Post Call-to-Action"' ); ?></label></td>
 									<td><fieldset>
 										<legend class="screen-reader-text"><span><?php echo __( 'Activate "Post Call-to-Action"' ); ?></span></legend>
 										<label for="users_can_register">
@@ -31,8 +32,8 @@
 									</fieldset></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Post Type for CTA Association' ); ?></label></td>
-									<td><select name="" id="">
+									<td scope="row"><label for="post_type_for_cta_association"><?php echo __( 'Post Type for CTA Association' ); ?></label></td>
+									<td><select name="post_cta_post_type" id="post-cta-post-type">
 										<option selected="selected" value=""><?php echo __( 'Make a selection...' ); ?></option>
 										<option value="">Posts</option>
 										<option value="">Pages</option>
@@ -43,7 +44,7 @@
 									</select></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Display Featured Image' ); ?></label></td>
+									<td scope="row"><label for="display_featured_image"><?php echo __( 'Display Featured Image' ); ?></label></td>
 									<td><fieldset>
 										<legend class="screen-reader-text"><span><?php echo __( 'Display Featured Image' ); ?></span></legend>
 										<label for="users_can_register">
@@ -52,16 +53,16 @@
 									</fieldset></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Background Color' ); ?></label></td>
-									<td class="color-field"><input type="text" name="cta-background-color" id="cta-background-color" class="color-picker" data-default-color="#0022dd" /></td>
+									<td scope="row"><label for="background_color"><?php echo __( 'Background Color' ); ?></label></td>
+									<td class="post-cta-color-field"><input type="text" name="post_cta_background_color" id="post-cta-background-color" class="color-picker" data-default-color="#0022dd" /></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Text Color' ); ?></label></td>
-									<td class="rum-color-field"><input type="text" name="cta-text-color" id="cta-text-color" class="color-picker" /></td>
+									<td scope="row"><label for="text_color"><?php echo __( 'Text Color' ); ?></label></td>
+									<td class="post-cta-color-field"><input type="text" name="post-cta-text-color" id="post-cta-text-color" class="color-picker" /></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Button Style' ); ?></label></td>
-									<td><select name="" id="">
+									<td scope="row"><label for="button_style"><?php echo __( 'Button Style' ); ?></label></td>
+									<td><select name="post_cta_button_style" id="post-cta-button-style">
 										<option selected="selected" value=""><?php echo __( 'Make a selection...' ); ?></option>
 										<option value="">Default</option>
 										<option value="">Primary</option>
@@ -73,8 +74,8 @@
 									</select></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="tablecell"><?php echo __( 'Button Text' ); ?></label></td>
-									<td><input name="" id="button-text" type="text" value="<?php echo __( 'Learn more...' ); ?>" class="button-text" /></td>
+									<td scope="row"><label for="button_text"><?php echo __( 'Button Text' ); ?></label></td>
+									<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( 'Learn more...' ); ?>" class="button-text" /></td>
 								</tr>
 							</table>
 						</div> <!-- .inside -->
@@ -111,11 +112,10 @@
 		
 		<br class="clear">
 
-		<form action="options.php" method="post">
 			<?php settings_fields('plugin_options'); ?>
 			<?php do_settings_sections('plugin'); ?>
 
-			<?php submit_button(); ?>
+			<?php submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null ) ?>
 		</form>
 	</div> <!-- #poststuff -->
 	
