@@ -30,7 +30,7 @@
 										</label>
 									</fieldset></td>
 								</tr>
-								<tr valign="top" class="alternate">
+								<tr valign="top">
 									<td scope="row"><label for="tablecell">Post Type for CTA Association</label></td>
 									<td><select name="" id="">
 										<option selected="selected" value="">Make a selection...</option>
@@ -53,11 +53,11 @@
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Background Color</label></td>
-									<td class="color-field"><input type="text" value="#bada55" class="my-color-field" data-default-color="#effeff"/></td>
+									<td class="color-field"><input type="text" name="cta-background-color" id="cta-background-color" class="color-picker" data-default-color="#0022dd" /></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Text Color</label></td>
-									<td class="color-field"><input type="text" value="#bada55" class="my-color-field" data-default-color="#effeff" /></td>
+									<td class="rum-color-field"><input type="text" name="cta-text-color" id="cta-text-color" class="color-picker" /></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="tablecell">Button Style</label></td>

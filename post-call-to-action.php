@@ -75,16 +75,27 @@ add_filter( ' the_content', 'rum_post_cta_box' );
 
 /* ----- add color picker ----- */
 
-add_action( 'admin_enqueue_scripts', 'rum_add_color_picker' );
-function rum_add_color_picker( $hook_suffix ) {
+add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
+function wp_enqueue_color_picker( ) {
 
-    if( is_admin() ) {
-     
-        // Add the color picker css file       
-        wp_enqueue_style( 'wp-color-picker' ); 
-         
+         // Add the color picker css file
+         wp_enqueue_style( 'wp-color-picker' );
+
         // Include our custom jQuery file with WordPress Color Picker dependency
-        wp_enqueue_script( 'rum-script-handle', plugins_url( 'jquery.custom.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+        wp_enqueue_script(
+	        'wp-color-picker-script',
+	        plugins_url( 'js/jquery.custom.js', __FILE__ ),
+	        array( 'wp-color-picker' ),
+	        false,
+	        true
+        );
+		// Include the Iris color picker
+	    wp_enqueue_script(
+		    'iris',
+		    admin_url( 'js/iris.min.js' ),
+		    array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
+		    false,
+		    1
+	    );
     }
-}
 
