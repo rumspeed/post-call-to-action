@@ -1,18 +1,16 @@
 <!-- create the CTA box -->
-<div class="rum-cta-box">
-	<div class="">
+<div class="rum-post-cta-box">
+	<div class="rum-post-cta-image">
 		<!-- display the featured image from the embedded post/page/etc. -->
-		<?php rum_post_cta_image() ?>
+		<?php get_the_post_thumbnail() ?>
 	</div>
-    <div class="rum-cta-text">
+    <div class="rum-post-cta-text">
         <!-- display the cta text -->
 	    <!-- text should be the title from the embedded post/page/etc. -->
-		<?php rum_post_cta_text() ?>
+		<h2><?php echo get_the_title(); ?></h2>
     </div>
-	<div class="rum-cta-button">
+	<div class="rum-post-cta-button">
         <!-- display the cta button -->
-		<?php rum_post_cta_button() ?>
-<!--		?php //$rum_post_cta_button_text = get_post_meta( $post => ID, '_rum_post_cta_button_text', true );
-//			echo '__( '$rum_post_cta_button_text' )'; -->
+		<?php echo get_option( 'rum_post_cta_button_text' ); ?>
     </div>
 </div>

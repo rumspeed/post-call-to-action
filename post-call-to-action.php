@@ -52,6 +52,20 @@ function rum_post_cta_options_page() {
 
 }
 
+/* ----- add the options that will be created/saved from the Settings page ---- */
+
+$rum_post_cta_options_arr = array(
+	'rum_post_cta_active' => 'yes/no',
+	'rum_post_cta_type' => 'post type for cta association',
+	'rum_post_cta_active_image' => 'yes/no',
+	'rum_post_cta_background_color' => 'color from color picker',
+	'rum_post_cta_text_color' => 'color from color picker',
+	'rum_post_cta_button_style' => 'button style from Bootstrap',
+	'rum_post_cta_button_text' => 'text to appear on button'
+);
+
+update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
+
 /* ----- add color picker that can be used on the Settings screen ----- */
 
 add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
@@ -123,35 +137,6 @@ function post_cta_meta_box_init() {
 	);
 
 }
-
-
-// This function adds a meta box with a callback function of my_meta_box_callback()
-//function add_my_meta_box() {
-//	$var1 = 'this';
-//	$var2 = 'that';
-//	add_meta_box(
-//		'meta_box_id',
-//		'meta_box Title',
-//		'my_meta_box_callback',
-//		'page',
-//		'normal',
-//		'low',
-//		array( 'foo' => $var1, 'bar' => $var2)
-//	);
-//}
-
-// $post is an object containing the current post (as a $post object)
-// $meta_box is an array with meta box id, title, callback, and args elements.
-// The args element is an array containing your passed $callback_args variables.
-
-function post_cta_meta_box_callback ( $post, $meta_box ) {
-	echo 'Last Modified: ' . $post->post_modified;        // outputs last time the post was modified
-	echo $meta_box['args']['foo'];                         // outputs 'this'
-	echo $meta_box['args']['bar'];                         // outputs 'that'
-	echo get_post_meta( $post->ID, 'my_custom_field', true ); // outputs value of custom field
-}
-
-//add_action( 'add_meta_boxes', 'add_my_meta_box');
 
 
 /* DISPLAY POST CALL TO ACTION BOX SINGLE POSTS */
