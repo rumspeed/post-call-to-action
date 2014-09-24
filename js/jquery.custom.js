@@ -15,5 +15,7 @@ var myColorOptions = {
     hide: true,
     // show a group of common colors beneath the square
     // or, supply an array of colors to customize further
-    palettes: true
+    palettes: true,
+    // draw a border around the collection of UI elements
+    border: true
 };
