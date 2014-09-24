@@ -1,18 +1,33 @@
+.rum-post-cta-image {
+    float: left;
+    margin: 2em;
+}
 .rum-post-cta-box {
     background: #bbbbbb;
     border: 3px solid #000000;
 }
 
+.rum-post-cta-background-color {
+    background: #0044cc;
+}
+
 .rum-post-cta-text {
+    font-size: 1.3em;
+}
+
+.rum-post-cta-text-color {
     color: #232323;
     font-size: 1.2em;
 }
 
-.rum-post-cta-button {
-    background: #ff853c;
+.rum-post-cta-button-style {
+
 }
 
 .rum-post-cta-button-text {
-    color: #232323;
     font-weight: 300;
+}
+
+.rum-post-cta-button-text-color {
+    background: #ff853c;
 }
