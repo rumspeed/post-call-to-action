@@ -19,6 +19,7 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 
 function rum_post_cta_menu() {
 	/*
+	 * add Post CTA to the Settings menu
 	 * use the add_options_page function
 	 * add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
 	 *

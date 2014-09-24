@@ -54,7 +54,7 @@
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="background_color"><?php echo __( 'Background Color' ); ?></label></td>
-									<td class="post-cta-color-field"><input type="text" name="post_cta_background_color" id="post-cta-background-color" class="color-picker" data-default-color="#0022dd" /></td>
+									<td class="post-cta-color-field"><input type="text" name="post_cta_background_color" id="post-cta-background-color" class="color-picker" /></td>
 								</tr>
 								<tr valign="top">
 									<td scope="row"><label for="text_color"><?php echo __( 'Text Color' ); ?></label></td>

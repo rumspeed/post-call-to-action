@@ -1,7 +1,7 @@
 // Add Color Picker to all inputs that have 'color-field' class
-//jQuery(document).ready(function($){
-//    $('.my-color-field').wpColorPicker();
-//});
+jQuery(document).ready(function($){
+    $('.color-picker').wpColorPicker(myColorOptions);
+});
 
 var myColorOptions = {
     // you can declare a default color here,
@@ -17,8 +17,3 @@ var myColorOptions = {
     // or, supply an array of colors to customize further
     palettes: true
 };
-
-jQuery(document).ready(function($) {
-    //$('.wp-color-picker-field').wpColorPicker(myColorOptions);
-    $('.color-picker').iris();
-    });
