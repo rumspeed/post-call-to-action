@@ -15,6 +15,9 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 //include_once( 'includes/settings.php' );
 //include_once( 'includes/display-functions.php' );
 
+
+/* POST CALL TO ACTION SETTINGS PAGE */
+
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
 
 function rum_post_cta_menu() {
@@ -24,7 +27,7 @@ function rum_post_cta_menu() {
 	 * add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
 	 *
 	 */
-	
+
 	add_options_page(
 		'Post Call to Action',
 		'Post CTA',
@@ -37,6 +40,7 @@ function rum_post_cta_menu() {
 
 add_action( 'admin_menu', 'rum_post_cta_menu' );
 
+/* ----- add the page for the Post Call to Action settings ----- */
 
 function rum_post_cta_options_page() {
 
@@ -44,15 +48,119 @@ function rum_post_cta_options_page() {
 		wp_die( 'You do not sufficient permission to access this page.' );
 	}
 
-	require( 'includes/options-page-wrapper.php' );
+	require( 'includes/settings.php' );
 
 }
 
-/* ----- load admin functions if in the backend ----- */
-	
-	// if ( is_admin() ) {
-	
-	// }
+/* ----- add color picker ----- */
+
+/*
+ * add a color picker to the Setting screen
+ * use the iris.min.js script
+ *
+ */
+
+add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
+
+function wp_enqueue_color_picker( ) {
+
+	// Add the color picker css file
+	wp_enqueue_style( 'wp-color-picker' );
+
+	// Include our custom jQuery file with WordPress Color Picker dependency
+	wp_enqueue_script(
+		'wp-color-picker-script',
+		plugins_url( 'js/jquery.custom.js', __FILE__ ),
+		array( 'wp-color-picker' ),
+		false,
+		true
+	);
+	// Include the Iris color picker
+	wp_enqueue_script(
+		'iris',
+		admin_url( 'js/iris.min.js' ),
+		array(
+			'jquery-ui-draggable',
+			'jquery-ui-slider',
+			'jquery-touch-punch'
+		),
+		false,
+		1
+	);
+}
+
+
+/* POST CALL TO ACTION META BOX ON POST EDIT SCREEN */
+
+/* ----- add the meta box to post sidebars ----- */
+
+	/*
+	 * add a Post Call To Action metabox to New Post and Edit Post screens
+	 * use the add_meta_box function
+	 * add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
+	 *
+	 */
+
+add_action( 'add_meta_boxes', 'post_cta_meta_box_init' );
+
+function post_cta_meta_box_init() {
+
+	$args = array(
+		'public'   => true,
+		'_builtin' => false
+	);
+
+	$post_types = get_post_types( $args, 'names' );
+
+		foreach ( $post_types as $post_type ) {
+			echo '<p>' . $post_type . '</p>';
+		}
+
+	add_meta_box(
+		'post-cta-meta-box',
+		__( 'Post Call to Action', 'post_cta_textdomain'),
+		'post_cta_meta_box_init',
+		'post',
+		'side',
+		'high',
+		array(
+			'post' => $post_types
+		)
+	);
+
+}
+
+
+// This function adds a meta box with a callback function of my_metabox_callback()
+//function add_my_meta_box() {
+//	$var1 = 'this';
+//	$var2 = 'that';
+//	add_meta_box(
+//		'metabox_id',
+//		'Metabox Title',
+//		'my_metabox_callback',
+//		'page',
+//		'normal',
+//		'low',
+//		array( 'foo' => $var1, 'bar' => $var2)
+//	);
+//}
+
+// $post is an object containing the current post (as a $post object)
+// $metabox is an array with metabox id, title, callback, and args elements.
+// The args element is an array containing your passed $callback_args variables.
+
+function post_cta_metabox_callback ( $post, $metabox ) {
+	echo 'Last Modified: ' . $post->post_modified;        // outputs last time the post was modified
+	echo $metabox['args']['foo'];                         // outputs 'this'
+	echo $metabox['args']['bar'];                         // outputs 'that'
+	echo get_post_meta( $post->ID, 'my_custom_field', true ); // outputs value of custom field
+}
+
+//add_action( 'add_meta_boxes', 'add_my_meta_box');
+
+
+/* DISPLAY POST CALL TO ACTION BOX SINGLE POSTS */
 
 /* ----- insert CTA box below content ----- */
 
@@ -63,40 +171,13 @@ function rum_post_cta_box( $content ) {
 	 *
 	 */
 
-	 if( is_singular() && is_main_query() ) {
+	if( is_singular() && is_main_query() ) {
 
-	 	$post_cta_box = 'Insert the CTA box here';
-	 	$content .= $new_content;
+		$rum_post_cta_box = '/includes/display-functions.php' ;
+		$content .= $rum_post_cta_box;
 
-	 }
-	 return $content;
+	}
+	return $content;
 }
 
 add_filter( ' the_content', 'rum_post_cta_box' );
-
-/* ----- add color picker ----- */
-
-add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
-function wp_enqueue_color_picker( ) {
-
-         // Add the color picker css file
-         wp_enqueue_style( 'wp-color-picker' );
-
-        // Include our custom jQuery file with WordPress Color Picker dependency
-        wp_enqueue_script(
-	        'wp-color-picker-script',
-	        plugins_url( 'js/jquery.custom.js', __FILE__ ),
-	        array( 'wp-color-picker' ),
-	        false,
-	        true
-        );
-		// Include the Iris color picker
-	    wp_enqueue_script(
-		    'iris',
-		    admin_url( 'js/iris.min.js' ),
-		    array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
-		    false,
-		    1
-	    );
-    }
-

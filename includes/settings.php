@@ -95,11 +95,8 @@
 					
 						<h3><span><?php echo __( 'About This Plugin' ); ?></span></h3>
 						<div class="inside">
-							<p><?php echo __( 'This plugin is brought to you by ' ); ?><a href="http://rumspeed.com/">Rumspeed</a>.</p>
-							<p><?php echo __( 'Create a relationship from a blog post to another post type for displaying a call-to-action at the bottom
-							of each post. Pick a post type to use an a metabox will appear in the post editor with available posts.
-							Use for services, portfolios, and even standard pages. Below are the style and option settings related to
-							this feature.' ); ?></p>
+							<p><?php echo __( 'Post Call to Action brought to you by ' ); ?><a href="http://rumspeed.com/">Rumspeed</a>.</p>
+							<p><?php echo __( 'Because every page should DO something.' ); ?></p>
 						</div> <!-- .inside -->
 						
 					</div> <!-- .postbox -->

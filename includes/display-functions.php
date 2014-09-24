@@ -12,5 +12,7 @@
 	<div class="rum-cta-button">
         <!-- display the cta button -->
 		<?php rum_post_cta_button() ?>
+<!--		?php //$rum_post_cta_button_text = get_post_meta( $post => ID, '_rum_post_cta_button_text', true );
+//			echo '__( '$rum_post_cta_button_text' )'; -->
     </div>
 </div>
