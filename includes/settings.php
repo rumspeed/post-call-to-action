@@ -17,38 +17,36 @@
 				<div class="meta-box-sortables ui-sortable">
 					
 					<div class="postbox">
-					<form method="post" action="options.php">
-					
+
 						<h3><span><?php echo __( 'Options' ); ?></span></h3>
 						<div class="inside">
+
+						<form method="post" action="options.php">
+						<?php settings_fields( 'rum_post_cta_options' ); ?>
+						<?php $rum_post_cta_options = get_option( 'rum_post_cta_options_arr' ); ?>
+
 							<table class="form-table">
 								<tr valign="top">
 									<td scope="row"><label for="activate_post_call_to_action"><?php echo __( 'Activate "Post Call-to-Action"' ); ?></label></td>
 									<td><fieldset>
 										<legend class="screen-reader-text"><span><?php echo __( 'Activate "Post Call-to-Action"' ); ?></span></legend>
-										<label for="users_can_register">
-											<input name="users_can_register" type="checkbox" id="users_can_register" value="1"  />
+										<label for="rum_post_cta_active">
+											<input name="rum_post_cta_options_arr[rum_post_cta_active]" type="checkbox" id="rum_post_cta_active" value="<?php echo esc_attr( $rum_post_cta_options_arr['rum_post_cta_active'] ); ?>"  />
 										</label>
 									</fieldset></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="post_type_for_cta_association"><?php echo __( 'Post Type for CTA Association' ); ?></label></td>
-									<td><select name="post_cta_post_type" id="post-cta-post-type">
-										<option selected="selected" value=""><?php echo __( 'Make a selection...' ); ?></option>
-										<option value="">Posts</option>
-										<option value="">Pages</option>
-										<option value="">Services</option>
-										<option value="">Products</option>
-										<option value="">Portfolio</option>
-										<option value="">Staff</option>
+									<td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association' ); ?></label></td>
+									<td><select name="rum_post_cta_type" id="rum_post-cta-type">
+										<option value=""><?php echo __( 'get_option( 'rum_post_cta_options[rum_post_cta_type]')' ); ?></option>
 									</select></td>
 								</tr>
 								<tr valign="top">
-									<td scope="row"><label for="display_featured_image"><?php echo __( 'Display Featured Image' ); ?></label></td>
+									<td scope="row"><label for="rum_post_cta_image_image"><?php echo __( 'Display Featured Image' ); ?></label></td>
 									<td><fieldset>
 										<legend class="screen-reader-text"><span><?php echo __( 'Display Featured Image' ); ?></span></legend>
-										<label for="users_can_register">
-											<input name="users_can_register" type="checkbox" id="users_can_register" value="1"  />
+										<label for="rum_post_cta_active_image">
+											<input name="rum_post_cta_options_arr[rum_post_active_image]" type="checkbox" id="rum_post_cta_active_image" value="<?php echo esc_attr( $rum_post_cta_options_arr['rum_post_cta_active'] ); ?>"  />
 										</label>
 									</fieldset></td>
 								</tr>
@@ -78,6 +76,7 @@
 									<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( 'Learn more...' ); ?>" class="button-text" /></td>
 								</tr>
 							</table>
+						</form>
 						</div> <!-- .inside -->
 					
 					</div> <!-- .postbox -->
@@ -109,11 +108,10 @@
 		
 		<br class="clear">
 
-			<?php settings_fields('plugin_options'); ?>
-			<?php do_settings_sections('plugin'); ?>
+		<p class="submit">
+			<input type="submit" class="button-primary" value="<?php echo __( 'Save Settings' ); ?>" >
+		</p>
 
-			<?php submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null ) ?>
-		</form>
 	</div> <!-- #poststuff -->
 	
 </div> <!-- .wrap -->

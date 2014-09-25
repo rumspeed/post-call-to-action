@@ -54,15 +54,88 @@ function rum_post_cta_options_page() {
 
 /* ----- add the options that will be created/saved from the Settings page ---- */
 
-$rum_post_cta_options_arr = array(
-	'rum_post_cta_active' => 'yes/no',
-	'rum_post_cta_type' => 'post type for cta association',
-	'rum_post_cta_active_image' => 'yes/no',
-	'rum_post_cta_background_color' => 'color from color picker',
-	'rum_post_cta_text_color' => 'color from color picker',
-	'rum_post_cta_button_style' => 'button style from Bootstrap',
-	'rum_post_cta_button_text' => 'text to appear on button'
-);
+function rum_post_cta_register_settings() {
+	/*
+	 * register the Post CTA Settings to be saved to the database
+	 * use the register_setting function
+	 * register_setting( $option_group, $option_name, $sanitize_callback )
+	 *
+	 */
+	register_setting(
+		'rum-post-cta-options',
+		'rum_post_cta_section',
+		'rum_post_cta_sanitize_options'
+	);
+
+
+	add_settings_section(
+		'rum_post_cta_section',
+		'Options',
+		'rum_post_cta_section',
+		'settings'
+	);
+
+// add_settings_field( $id, $title, $callback, $page, $section, $args );
+
+	add_settings_field(
+		'rum_post_cta_active',              // $id - used in CSS
+		'Activate Post Call to Action',     // $title - displayed on settings page
+		'rum_post_cta_setting_active',      // $callback - URL slug
+		'settings'                          // $page -
+	);
+
+	add_settings_field(
+		'rum_post_cta_type',
+		'Post Type for CTA Association',
+		'rum_post_cta_setting_type',
+		'settings'
+	);
+
+	add_settings_field(
+		'rum_post_cta_active_image',
+		'Display Featured Image',
+		'rum_post_cta_setting_active_image',
+		'settings'
+	);
+
+	add_settings_field(
+		'rum_post_cta_background_color',
+		'Background Color',
+		'rum_post_cta_background_color',
+		'settings'
+	);
+
+	add_settings_field(
+		'rum_post_cta_text_color',
+		'Text Color',
+		'rum_post_cta_text_color',
+		'settings'
+	);
+
+	add_settings_field(
+		'rum_post_cta_button_style',
+		'Button Style',
+		'rum_post_cta_button_style',
+		'settings'
+	);
+
+	add_settings_field(
+		'rum_post_cta_button_text',
+		'Button Text',
+		'rum_post_cta_button_text',
+		'settings'
+	);
+
+}
+//$rum_post_cta_options_arr = array(
+//	'rum_post_cta_active' => 'yes/no',
+//	'rum_post_cta_type' => 'post type for cta association',
+//	'rum_post_cta_active_image' => 'yes/no',
+//	'rum_post_cta_background_color' => 'color from color picker',
+//	'rum_post_cta_text_color' => 'color from color picker',
+//	'rum_post_cta_button_style' => 'button style from Bootstrap',
+//	'rum_post_cta_button_text' => 'text to appear on button'
+//);
 
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
@@ -102,20 +175,23 @@ function wp_enqueue_color_picker( ) {
 
 /* ----- add the meta box to post sidebars ----- */
 
-add_action( 'add_meta_boxes', 'post_cta_meta_box_init' );
+add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
-function post_cta_meta_box_init() {
+function rum_post_cta_meta_box_init() {
 
-	$args = array(
-		'public'   => true,
-		'_builtin' => false
-	);
-
-	$post_types = get_post_types( $args, 'names' );
-
-		foreach ( $post_types as $post_type ) {
-			echo '<p>' . $post_type . '</p>';
-		}
+//	$args = array(
+//		'public'   => true,
+//		'_builtin' => false
+//	);
+//
+//	$post_types = get_post_types( $args, 'names' );
+//
+//		foreach ( $post_types as $post_type ) {
+//			echo '<p>' . $post_type . '</p>';
+//		}
+//
+//    $rum_post_cta_meta_box_message = __('<p>If you would like to display a call-to-action bar at the bottom
+//			of your post, select an available <strong>post_type</strong> post from the dropdown menu.</p>', 'meta_box_message');
 
 	/*
 	 * add a Post Call To Action meta box to New Post and Edit Post screens
@@ -125,17 +201,40 @@ function post_cta_meta_box_init() {
 	 */
 
 	add_meta_box(
-		'post-cta-meta-box',
-		__( 'Post Call to Action', 'post_cta_textdomain'),
-		'post_cta_meta_box_init',
-		'post',
-		'side',
-		'high',
-		array(
-			'post' => $post_types
-		)
+		'rum_post-cta-meta-box',                                    // $id
+		__( 'Post Call to Action', 'rum_post_cta_textdomain'),      // $title
+        'rum_post_cta_meta_box_callback',                           // $callback
+		'post',                                                     // $page
+		'side',                                                     // $context
+		'high'                                                      // $priority
+//		'rum_post_cta_meta_box_callbac_argsk'                       // $callback_args
 	);
 
+    /* ----- outputs the content of the meta box ----- */
+    function rum_post_cta_meta_box_callback( $post ){
+        echo '<?php get_post_type(); ?>';
+        echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
+            select an available post_type from the dropdown menu.</p>';
+    };
+
+// https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
+
+//    $args = array(
+//        'post_type' => 'post_type_you_want_there',
+//        'nopaging' => true
+//    );
+//
+//    $query = new WP_Query( $args );
+//
+//    echo 'select name="posttype';
+//
+//    while ( $the_query -> have_posts() ) : $the_query -> the_post();
+//        echo '<option value="'.$post -> ID.'">';
+//        the_title();
+//        echo '</option>';
+//    endwhile;
+//
+//    echo '</select>';
 }
 
 
