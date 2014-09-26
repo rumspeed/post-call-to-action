@@ -133,9 +133,6 @@ update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
 
 /* ----- Output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
-
-// TODO - populate the dropdown list with post types
-
 function rum_post_cta_association () {
 
 	// initialize return variable
