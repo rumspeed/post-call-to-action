@@ -141,11 +141,11 @@ function rum_post_cta_association () {
     // do not list these post types
     $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
     $post_types = get_post_types( '', 'names' );
-
+print_r($post_types);
     foreach ( $post_types as $post_type ) {
 
         if ( $post_types != $hidden_post_types ) {
-            echo '<p>' . $post_type . '</p>';
+            echo '<option>' . $post_type . '</option>';
         }
 
     }
