@@ -39,7 +39,7 @@
 									<td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association', 'rum-post-cta-textdomain' ); ?></label></td>
 									<td><select name="rum_post_cta_type" id="rum_post-cta-type">
 										<option selected=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
-										<?php rum_post_cta_association() ?>
+										<?php echo rum_post_cta_association() ?>
 									</select></td>
 								</tr>
 								<tr valign="top">

@@ -138,6 +138,9 @@ update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
 function rum_post_cta_association () {
 
+	// initialize return variable
+	$options    = '';
+
     // do not list these post types
     $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
     $post_types = get_post_types( '', 'names' );
@@ -145,10 +148,12 @@ function rum_post_cta_association () {
     foreach ( $post_types as $post_type ) {
 
         if ( $post_types != $hidden_post_types ) {
-            echo '<option>' . $post_type . '</option>';
+            $options .= '<option>' . $post_type . '</option>';
         }
 
     }
+
+    return $options;
 }
 
 //	$args = array(
