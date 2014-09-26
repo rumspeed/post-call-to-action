@@ -151,11 +151,11 @@ function rum_post_cta_association () {
 
     foreach ( $post_types as $post_type ) {
 
-        $options .= '<option>' . $post_type . '</option>';
+        $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
     }
 
     // include page as a post type because it was excluded in the arguments with "_builtin"
-    $options .= '<option>page</option>';
+    $options .= '<option value="page">page</option>';
 
     return $options;
 }
