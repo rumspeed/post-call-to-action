@@ -146,16 +146,12 @@ function rum_post_cta_association () {
 	   'public'   => true,
 	   '_builtin' => false
 	);
-//    // do not list these post types
-//    $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
+
     $post_types = get_post_types( $args, 'names' );
 
     foreach ( $post_types as $post_type ) {
 
-//        if ( $post_types != $hidden_post_types ) {
-            $options .= '<option>' . $post_type . '</option>';
-//        }
-
+        $options .= '<option>' . $post_type . '</option>';
     }
 
     // include page as a post type because it was excluded in the arguments with "_builtin"
