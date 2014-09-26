@@ -141,17 +141,25 @@ function rum_post_cta_association () {
 	// initialize return variable
 	$options    = '';
 
-    // do not list these post types
-    $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
-    $post_types = get_post_types( '', 'names' );
+	// set arguments for get_post_types()
+	$args = array(
+	   'public'   => true,
+	   '_builtin' => false
+	);
+//    // do not list these post types
+//    $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
+    $post_types = get_post_types( $args, 'names' );
 
     foreach ( $post_types as $post_type ) {
 
-        if ( $post_types != $hidden_post_types ) {
+//        if ( $post_types != $hidden_post_types ) {
             $options .= '<option>' . $post_type . '</option>';
-        }
+//        }
 
     }
+
+    // include page as a post type because it was excluded in the arguments with "_builtin"
+    $options .= '<option>page</option>';
 
     return $options;
 }
