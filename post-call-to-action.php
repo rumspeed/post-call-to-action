@@ -7,7 +7,7 @@ Author: Scot Rumery
 Author URI: http://rumspeed.com/scot-rumery/
 */
 
-define( 'RUM_POST_CTA_PLUGIN_VERSION', '0.1.0' );
+define( 'RUM_POST_CTA_PLUGIN_VERSION', '0.2.0' );
 define( 'RUM_POST_CTA_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 
