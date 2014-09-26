@@ -146,6 +146,8 @@ function rum_post_cta_association () {
 
     $post_types = get_post_types( $args, 'names' );
 
+// TODO - get the stored value for this settings option
+// TODO - compare the value stored with the list and add "selected" to the <option> that matches
     foreach ( $post_types as $post_type ) {
 
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
