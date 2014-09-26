@@ -40,7 +40,7 @@ function rum_post_cta_menu() {
 
 add_action( 'admin_menu', 'rum_post_cta_menu' );
 
-/* ----- add the page with the Post Call to Action settings ----- */
+/* ----- add the screen with the Post Call to Action settings ----- */
 
 function rum_post_cta_options_page() {
 
@@ -66,7 +66,6 @@ function rum_post_cta_register_settings() {
 		'rum_post_cta_section',
 		'rum_post_cta_sanitize_options'
 	);
-
 
 	add_settings_section(
 		'rum_post_cta_section',
@@ -127,17 +126,51 @@ function rum_post_cta_register_settings() {
 	);
 
 }
-//$rum_post_cta_options_arr = array(
-//	'rum_post_cta_active' => 'yes/no',
-//	'rum_post_cta_type' => 'post type for cta association',
-//	'rum_post_cta_active_image' => 'yes/no',
-//	'rum_post_cta_background_color' => 'color from color picker',
-//	'rum_post_cta_text_color' => 'color from color picker',
-//	'rum_post_cta_button_style' => 'button style from Bootstrap',
-//	'rum_post_cta_button_text' => 'text to appear on button'
-//);
 
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
+
+// TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages
+
+
+/* ----- Output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
+
+// TODO - populate the dropdown list with post types
+
+function rum_post_cta_association () {
+
+    // do not list these post types
+    $hidden_post_types = array( 'attachment', 'revision', 'nav_menu_item' );
+    $post_types = get_post_types( '', 'names' );
+
+    foreach ( $post_types as $post_type ) {
+
+        if ( $post_types != $hidden_post_types ) {
+            echo '<p>' . $post_type . '</p>';
+        }
+
+    }
+}
+
+//	$args = array(
+//		'public'   => true,
+//		'_builtin' => false
+//	);
+//
+//	$post_types = get_post_types( $args, 'names' );
+//
+//		foreach ( $post_types as $post_type ) {
+//			echo '<p>' . $post_type . '</p>';
+//		}
+//
+
+// Show posts of 'post', 'page' and 'movie' post types on home page
+add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+
+function add_my_post_types_to_query( $query ) {
+    if ( is_admin() && $query->is_main_query() )
+        $query->set( 'post_type', array( $post_types ) );
+    return $query;
+}
 
 /* ----- add color picker that can be used on the Settings screen ----- */
 
@@ -156,6 +189,7 @@ function wp_enqueue_color_picker( ) {
 		false,
 		true
 	);
+
 	// Include the Iris color picker
 	wp_enqueue_script(
 		'iris',
@@ -170,6 +204,13 @@ function wp_enqueue_color_picker( ) {
 	);
 }
 
+// TODO - populate the button style dropdown with Bootstrap button styles
+
+// Checks for input and saves if needed
+if( isset( $_POST[ 'meta-color' ] ) ) {
+    update_post_meta( $post_id, 'meta-color', $_POST[ 'meta-color' ] );
+}
+
 
 /* POST CALL TO ACTION META BOX ON POST EDIT SCREEN */
 
@@ -178,20 +219,6 @@ function wp_enqueue_color_picker( ) {
 add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 function rum_post_cta_meta_box_init() {
-
-//	$args = array(
-//		'public'   => true,
-//		'_builtin' => false
-//	);
-//
-//	$post_types = get_post_types( $args, 'names' );
-//
-//		foreach ( $post_types as $post_type ) {
-//			echo '<p>' . $post_type . '</p>';
-//		}
-//
-//    $rum_post_cta_meta_box_message = __('<p>If you would like to display a call-to-action bar at the bottom
-//			of your post, select an available <strong>post_type</strong> post from the dropdown menu.</p>', 'meta_box_message');
 
 	/*
 	 * add a Post Call To Action meta box to New Post and Edit Post screens
@@ -207,15 +234,9 @@ function rum_post_cta_meta_box_init() {
 		'post',                                                     // $page
 		'side',                                                     // $context
 		'high'                                                      // $priority
-//		'rum_post_cta_meta_box_callbac_argsk'                       // $callback_args
+//		'rum_post_cta_meta_box_callback_args'                       // $callback_args
 	);
 
-    /* ----- outputs the content of the meta box ----- */
-    function rum_post_cta_meta_box_callback( $post ){
-        echo '<?php get_post_type(); ?>';
-        echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
-            select an available post_type from the dropdown menu.</p>';
-    };
 
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
@@ -235,6 +256,14 @@ function rum_post_cta_meta_box_init() {
 //    endwhile;
 //
 //    echo '</select>';
+
+    /* ----- outputs the content of the meta box ----- */
+    function rum_post_cta_meta_box_callback( $post ){
+        echo '<?php get_post_types(); ?>';
+        echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
+            select an available post_type from the dropdown menu.</p>';
+    };
+
 }
 
 
