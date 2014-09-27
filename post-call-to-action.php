@@ -140,8 +140,7 @@ function rum_post_cta_association () {
 
 	// set arguments for get_post_types()
 	$args = array(
-	   'public'   => true,
-	   '_builtin' => false
+	   'public'   => true
 	);
 
     $post_types = get_post_types( $args, 'names' );
@@ -152,10 +151,7 @@ function rum_post_cta_association () {
 
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
     }
-
-    // include page as a post type because it was excluded in the arguments with "_builtin"
-    $options .= '<option value="page">page</option>';
-
+    
     return $options;
 }
 
