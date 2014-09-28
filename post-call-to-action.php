@@ -155,18 +155,6 @@ function rum_post_cta_association () {
     return $options;
 }
 
-//	$args = array(
-//		'public'   => true,
-//		'_builtin' => false
-//	);
-//
-//	$post_types = get_post_types( $args, 'names' );
-//
-//		foreach ( $post_types as $post_type ) {
-//			echo '<p>' . $post_type . '</p>';
-//		}
-//
-
 // Show posts of 'post', 'page' and 'movie' post types on home page
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
