@@ -127,26 +127,80 @@ function rum_post_cta_register_settings() {
 
 }
 
+// initialize return variable
+$rum_post_cta_options_arr    = array(
+
+    $rum_post_cta_options_arr['rum_post_cta_active'] = $rum_post_cta_active,
+    $rum_post_cta_options_arr['rum_post_cta_type'] = $rum_post_cta_type,
+    $rum_post_cta_options_arr['rum_post_cta_active_image'] = $rum_post_cta_active_image,
+    $rum_post_cta_options_arr['rum_post_cta_background_color'] = $rum_post_cta_background_color,
+    $rum_post_cta_options_arr['rum_post_cta_text_color'] = $rum_post_cta_text_color,
+    $rum_post_cta_options_arr['rum_post_cta_button_style'] = $rum_post_cta_button_style,
+    $rum_post_cta_options_arr['rum_post_cta_button_text'] = $rum_post_cta_button_text
+
+);
+
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
+$rum_post_cta_options_arr = get_option( 'rum_post_options_arr' );
+
+if( $rum_post_cta_options_arr != "" ) {
+    $rum_post_cta_active            = $rum_post_cta_options_arr['rum_post_cta_active'];
+    $rum_post_cta_type              = $rum_post_cta_options_arr['rum_post_cta_type'];
+    $rum_post_cta_active_image      = $rum_post_cta_options_arr['rum_post_cta_active_image'];
+    $rum_post_cta_background_color  = $rum_post_cta_options_arr['rum_post_cta_background_color'];
+    $rum_post_cta_text_color        = $rum_post_cta_options_arr['rum_post_cta_text_color'];
+    $rum_post_cta_button_style      = $rum_post_cta_options_arr['rum_post_cta_button_style'];
+    $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
+}
+
+/* ----- check to see if form already submitted ----- */
+if( isset( $_POST['rum_post_cta_options_form_submitted'] ) ) {
+
+    $hidden_field = esc_html( $_POST['rum_post_cta_options_form_submitted'] );
+
+    if( $hidden_field == 'Y' ) {
+
+        $rum_post_cta_active = $_POST['rum_post_cta_active'] ;
+        $rum_post_cta_type = $_POST['rum_post_cta_type'];
+        $rum_post_cta_active_image = $_POST['rum_post_cta_active_image'];
+        $rum_post_cta_background_color = $_POST['rum_post_cta_background_color'];
+        $rum_post_cta_text_color = $_POST['rum_post_cta_text_color'];
+        $rum_post_cta_button_style = $_POST['rum_post_cta_button_style'];
+        $rum_post_cta_button_text = esc_html( $_POST['rum_post_cta_button_text'] );
+
+        echo $rum_post_cta_button_text;
+
+    }
+
+}
+
+
 // TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages
+
+// Show posts of 'post', 'page' and 'movie' post types on home page
+//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+//
+//function add_my_post_types_to_query( $query ) {
+//    if ( is_home() && $query->is_main_query() )
+//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
+//    return $query;
+//}
 
 
 /* ----- Output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
 function rum_post_cta_association () {
 
-	// initialize return variable
-	$options    = '';
-
 	// set arguments for get_post_types()
 	$args = array(
-	   'public'   => true
+	   'public'   => true,
 	);
 
     $post_types = get_post_types( $args, 'names' );
 
 // TODO - get the stored value for this settings option
 // TODO - compare the value stored with the list and add "selected" to the <option> that matches
+
     foreach ( $post_types as $post_type ) {
 
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
@@ -155,14 +209,6 @@ function rum_post_cta_association () {
     return $options;
 }
 
-// Show posts of 'post', 'page' and 'movie' post types on home page
-add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-
-function add_my_post_types_to_query( $query ) {
-    if ( is_admin() && $query->is_main_query() )
-        $query->set( 'post_type', array( $post_types ) );
-    return $query;
-}
 
 /* ----- add color picker that can be used on the Settings screen ----- */
 
@@ -251,9 +297,11 @@ function rum_post_cta_meta_box_init() {
 
     /* ----- outputs the content of the meta box ----- */
     function rum_post_cta_meta_box_callback( $post ){
-        echo '<?php get_post_types(); ?>';
-        echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
-            select an available post_type from the dropdown menu.</p>';
+
+            echo '<?php get_post_types(); ?>';
+            echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
+                select an available post_type from the dropdown menu.</p>';
+        
     };
 
 }

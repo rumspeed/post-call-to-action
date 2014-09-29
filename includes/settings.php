@@ -21,7 +21,9 @@
 						<h3><span><?php echo __( 'Options', 'rum-post-cta-textdomain' ); ?></span></h3>
 						<div class="inside">
 
-						<form method="post" action="options.php">
+						<form name="rum_post_cta_options_form" method="post" action="">
+                        <input type="hidden" name="rum_post_cta_options_form_submitted" value="Y">
+
 						<?php settings_fields( 'rum_post_cta_options' ); ?>
 						<?php $rum_post_cta_options = get_option( 'rum_post_cta_options_arr' ); ?>
 
@@ -77,6 +79,11 @@
 									<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( 'Learn more...', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
 								</tr>
 							</table>
+
+                            <p class="submit">
+                                <input type="submit" class="button-primary" value="<?php echo __( 'Save Settings', 'rum-post-cta-textdomain' ); ?>" >
+                            </p>
+
 						</form>
 						</div> <!-- .inside -->
 					
@@ -108,10 +115,6 @@
 		</div> <!-- #post-body .metabox-holder .columns-2 -->
 		
 		<br class="clear">
-
-		<p class="submit">
-			<input type="submit" class="button-primary" value="<?php echo __( 'Save Settings', 'rum-post-cta-textdomain' ); ?>" >
-		</p>
 
 	</div> <!-- #poststuff -->
 	
