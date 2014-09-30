@@ -191,6 +191,12 @@ if( $rum_post_cta_options_arr != "" ) {
 //        $rum_post_cta_button_style = $_POST['rum_post_cta_button_style'];
 //        $rum_post_cta_button_text = esc_html( $_POST['rum_post_cta_button_text'] );
 //
+//        echo $rum_post_cta_active;
+//        echo $rum_post_cta_type;
+//        echo $rum_post_cta_active_image;
+//        echo $rum_post_cta_background_color;
+//        echo $rum_post_cta_text_color;
+//        echo $rum_post_cta_button_style;
 //        echo $rum_post_cta_button_text;
 //
 //    }
@@ -238,14 +244,6 @@ function change( $data ) {
 
 // TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages
 
-// Show posts of 'post', 'page' and 'movie' post types on home page
-//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-//
-//function add_my_post_types_to_query( $query ) {
-//    if ( is_home() && $query->is_main_query() )
-//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
-//    return $query;
-//}
 
 
 /* ----- Output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
@@ -268,6 +266,15 @@ function rum_post_cta_association () {
     
     return $options;
 }
+
+// Show posts of 'post', 'page' and 'movie' post types on home page
+//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+//
+//function add_my_post_types_to_query( $query ) {
+//    if ( is_home() && $query->is_main_query() )
+//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
+//    return $query;
+//}
 
 
 /* ----- add color picker that can be used on the Settings screen ----- */
@@ -334,53 +341,59 @@ add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 function rum_post_cta_meta_box_init() {
 
-	/*
-	 * add a Post Call To Action meta box to New Post and Edit Post screens
-	 * use the add_meta_box function
-	 * add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
-	 *
-	 */
+    /*
+     * add a Post Call To Action meta box to New Post and Edit Post screens
+     * use the add_meta_box function
+     * add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
+     *
+     */
 
-	add_meta_box(
-		'rum_post-cta-meta-box',                                    // $id
-		__( 'Post Call to Action', 'rum_post_cta_textdomain'),      // $title
+    add_meta_box(
+        'rum_post-cta-meta-box',                                    // $id
+        __('Post Call to Action', 'rum_post_cta_textdomain'),      // $title
         'rum_post_cta_meta_box_callback',                           // $callback
-		'post',                                                     // $page
-		'side',                                                     // $context
-		'high'                                                      // $priority
-//		'rum_post_cta_meta_box_callback_args'                       // $callback_args
-	);
+        'post',                                                     // $page
+        'side',                                                     // $context
+        'high'                                                      // $priority
+    //	'rum_post_cta_meta_box_callback_args'                       // $callback_args
+    );
+}
 
 
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
+// pass through the selected rum_post_cta_association post type
+// list the titles of all the posts of that type
+function rum_post_cta_meta_box_list() {
 
-//    $args = array(
-//        'post_type' => 'post_type_you_want_there',
-//        'nopaging' => true
-//    );
-//
-//    $query = new WP_Query( $args );
-//
-//    echo 'select name="posttype';
-//
-//    while ( $the_query -> have_posts() ) : $the_query -> the_post();
-//        echo '<option value="'.$post -> ID.'">';
-//        the_title();
-//        echo '</option>';
-//    endwhile;
-//
-//    echo '</select>';
+    echo '1 box goes here';
 
-    /* ----- outputs the content of the meta box ----- */
-    function rum_post_cta_meta_box_callback( $post ){
+    $cta_query = new WP_Query('rum_post_cta_association');
 
-            echo '<?php get_post_types(); ?>';
-            echo '<p>If you would like to display a call-to-action bar at the bottom of your post,
-                select an available post_type from the dropdown menu.</p>';
-        
-    };
+    echo '<select name="posttype">';
+    echo '2 box goes here';
 
+    while ($cta_query->have_posts()) : $cta_query->the_post();
+        echo '<option value="' . $post->ID . '">';
+        the_title();
+        echo '3 box goes here';
+        echo '</option>';
+    endwhile;
+
+    echo '</select>';
 }
+
+/* ----- outputs the content of the meta box ----- */
+function rum_post_cta_meta_box_callback(){
+
+        echo '<?php rum_post_cta_meta_box_list ?>';
+        printf( __( '<p>If you would like to display a call-to-action bar at the bottom of your post,
+            select an available %s from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_association );
+
+};
+
+
+
+// TODO -- save the selection
 
 
 /*
