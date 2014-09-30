@@ -205,32 +205,24 @@ function rum_post_cta_association () {
 	// set arguments for get_post_types()
 	$args = array(
 	   'public'   => true,
+        '_builtin' => false
 	);
 
-    // exclude the "attachment" type from the list
-    $args = array_diff( $args, array( 'attachment' ) );
-
     $post_types = get_post_types( $args, 'names' );
-
-// TODO - get the stored value for this settings option
-// TODO - compare the value stored with the list and add "selected" to the <option> that matches
 
     foreach ( $post_types as $post_type ) {
 
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
     }
-    
+
+    // include page as a post type because it was excluded in the arguments with "_builtin"
+    $options .= '<option value="page">page</option>';
+
     return $options;
 }
 
-// Show posts of 'post', 'page' and 'movie' post types on home page
-//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-//
-//function add_my_post_types_to_query( $query ) {
-//    if ( is_home() && $query->is_main_query() )
-//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
-//    return $query;
-//}
+// TODO - get the stored value for this settings option
+// TODO - compare the value stored with the list and add "selected" to the <option> that matches
 
 /* ----- add color picker that can be used on the Settings screen ----- */
 
