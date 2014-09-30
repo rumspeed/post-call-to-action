@@ -145,7 +145,7 @@ function rum_post_cta_register_settings() {
 
 }
 
-// initialize return variable
+// define setting options array
 $rum_post_cta_options_arr    = array(
 
     $rum_post_cta_options_arr['rum_post_cta_active'] = $rum_post_cta_active,
@@ -160,6 +160,7 @@ $rum_post_cta_options_arr    = array(
 
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
+// if the array is not blank, retrieve the options from the array ( use get_option() )
 $rum_post_cta_options_arr = get_option( 'rum_post_options_arr' );
 
 if( $rum_post_cta_options_arr != "" ) {
@@ -172,24 +173,62 @@ if( $rum_post_cta_options_arr != "" ) {
     $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
 }
 
-/* ----- check to see if form already submitted ----- */
-if( isset( $_POST['rum_post_cta_options_form_submitted'] ) ) {
+// check to see if form already submitted
+//if( isset( $_POST['rum_post_cta_options_form_submitted'] ) ) {
+//
+//    $hidden_field = esc_html( $_POST['rum_post_cta_options_form_submitted'] );
+//
+//    if( $hidden_field == 'Y' ) {
+//
+//        $rum_post_cta_active = $_POST['rum_post_cta_active'] ;
+//        $rum_post_cta_type = $_POST['rum_post_cta_type'];
+//        $rum_post_cta_active_image = $_POST['rum_post_cta_active_image'];
+//        $rum_post_cta_background_color = $_POST['rum_post_cta_background_color'];
+//        $rum_post_cta_text_color = $_POST['rum_post_cta_text_color'];
+//        $rum_post_cta_button_style = $_POST['rum_post_cta_button_style'];
+//        $rum_post_cta_button_text = esc_html( $_POST['rum_post_cta_button_text'] );
+//
+//        echo $rum_post_cta_button_text;
+//
+//    }
+//
+//}
 
-    $hidden_field = esc_html( $_POST['rum_post_cta_options_form_submitted'] );
+// show message at top of screen when settings saved
+function change( $data ) {
 
-    if( $hidden_field == 'Y' ) {
+    $message = null;
+    $type = null;
 
-        $rum_post_cta_active = $_POST['rum_post_cta_active'] ;
-        $rum_post_cta_type = $_POST['rum_post_cta_type'];
-        $rum_post_cta_active_image = $_POST['rum_post_cta_active_image'];
-        $rum_post_cta_background_color = $_POST['rum_post_cta_background_color'];
-        $rum_post_cta_text_color = $_POST['rum_post_cta_text_color'];
-        $rum_post_cta_button_style = $_POST['rum_post_cta_button_style'];
-        $rum_post_cta_button_text = esc_html( $_POST['rum_post_cta_button_text'] );
+    if ( null != $data ) {
 
-        echo $rum_post_cta_button_text;
+        if ( false === get_option( 'myOption' ) ) {
+
+            add_option( 'myOption', $data );
+            $type = 'updated';
+            $message = __( 'Successfully saved', 'rum-post-cta-text-domain' );
+
+        } else {
+
+            update_option( 'myOption', $data );
+            $type = 'updated';
+            $message = __( 'Successfully updated', 'rum-post-cta-text-domain' );
+
+        }
+
+    } else {
+
+        $type = 'error';
+        $message = __( 'Data can not be empty', 'rum_post-cta-text-domain' );
 
     }
+
+    add_settings_error(
+        'rum_post_cta_settings_error',
+        esc_attr( 'settings_updated' ),
+        $message,
+        $type
+    );
 
 }
 
