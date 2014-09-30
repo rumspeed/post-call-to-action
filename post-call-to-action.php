@@ -365,13 +365,26 @@ function rum_post_cta_meta_box_list() {
     echo '</select>';
 }
 
+add_action( 'register_sidebar_widget', 'rum_post_cta_meta_box_list' );
+
 /* ----- output the content of the meta box ----- */
 
-function rum_post_cta_meta_box_callback(){
+function rum_post_cta_meta_box_callback() {
 
-        echo '<?php rum_post_cta_meta_box_list ?>';
-        printf( __( '<p>If you would like to display a call-to-action bar at the bottom of your post,
-            select an available %s from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_association );
+    // display a dropdown list
+    ?>
+    <select name="rum_post_cta_selection" id="rum_post-cta-selection">
+        <option selected=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
+        <?php echo rum_post_cta_association() ?>
+    </select>
+    <?php
+
+    // populate that list with items from the selected post type
+    $rum_post_cta_options = get_option( 'rum_post_cta_options_arr' );
+    // display text message
+    printf( __( '<p>If you would like to display a call-to-action bar at the bottom of your post,
+        select an available %s from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_association );
+    // save the selection
 
 };
 
