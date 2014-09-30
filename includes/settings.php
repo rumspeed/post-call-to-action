@@ -68,13 +68,7 @@
 									<td scope="row"><label for="button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 									<td><select name="post_cta_button_style" id="post-cta-button-style">
 										<option selected="selected" value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
-                                            <option value="">Default</option>
-                                            <option value="">Primary</option>
-                                            <option value="">Success</option>
-                                            <option value="">Info</option>
-                                            <option value="">Warning</option>
-                                            <option value="">Danger</option>
-                                            <option value="">Link</option>
+                                            <?php echo rum_post_cta_button_types() ?>
 									</select></td>
 								</tr>
 								<tr valign="top">

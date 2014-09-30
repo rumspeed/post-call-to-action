@@ -34,7 +34,10 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 //include_once( 'includes/display-functions.php' );
 
 
-/* POST CALL TO ACTION SETTINGS PAGE */
+/*
+ * POST CALL TO ACTION SETTINGS PAGE
+ *
+ */
 
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
 
@@ -299,15 +302,31 @@ function wp_enqueue_color_picker( ) {
 	);
 }
 
-// TODO - populate the button style dropdown with Bootstrap button styles
+// populate the button style drop down with Bootstrap button styles
 
-// Checks for input and saves if needed
-if( isset( $_POST[ 'meta-color' ] ) ) {
-    update_post_meta( $post_id, 'meta-color', $_POST[ 'meta-color' ] );
+function rum_post_cta_button_types() {
+    $button_types = array(
+        'Default',
+        'Primary',
+        'Success',
+        'Info',
+        'Warning',
+        'Danger',
+        'Link'
+    );
+
+    foreach ( $button_types as $button_type ) {
+        $buttons .= '<option value"' . $button_type . '">' . $button_type . '</option>';
+    }
+
+    return $buttons;
 }
 
 
-/* POST CALL TO ACTION META BOX ON POST EDIT SCREEN */
+/*
+ * POST CALL TO ACTION META BOX ON POST EDIT SCREEN
+ *
+ * /
 
 /* ----- add the meta box to post sidebars ----- */
 
@@ -364,7 +383,10 @@ function rum_post_cta_meta_box_init() {
 }
 
 
-/* DISPLAY POST CALL TO ACTION BOX SINGLE POSTS */
+/*
+ * DISPLAY POST CALL TO ACTION BOX SINGLE POSTS
+ *
+ */
 
 /* ----- insert CTA box below content ----- */
 
