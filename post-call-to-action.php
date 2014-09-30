@@ -207,6 +207,9 @@ function rum_post_cta_association () {
 	   'public'   => true,
 	);
 
+    // exclude the "attachment" type from the list
+    $args = array_diff( $args, array( 'attachment' ) );
+
     $post_types = get_post_types( $args, 'names' );
 
 // TODO - get the stored value for this settings option
