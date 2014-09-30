@@ -30,8 +30,8 @@ define( 'RUM_POST_CTA_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 
 // include files - these are simply to organize functions into logical areas
-//include_once( 'includes/settings.php' );
-//include_once( 'includes/display-functions.php' );
+// include_once( 'includes/settings.php' );
+// include_once( 'includes/display-functions.php' );
 
 
 /*
@@ -42,13 +42,8 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
 
 function rum_post_cta_menu() {
-	/*
-	 * add Post CTA to the Settings menu
-	 * use the add_options_page function
-	 * add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
-	 *
-	 */
 
+	// add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
 	add_options_page(
 		'Post Call to Action',
 		'Post CTA',
@@ -61,7 +56,7 @@ function rum_post_cta_menu() {
 
 add_action( 'admin_menu', 'rum_post_cta_menu' );
 
-/* ----- add the screen with the Post Call to Action settings ----- */
+/* ----- check permissions and add the screen with the Post Call-to-Action settings ----- */
 
 function rum_post_cta_options_page() {
 
@@ -73,21 +68,18 @@ function rum_post_cta_options_page() {
 
 }
 
-/* ----- add the options that will be created/saved from the Settings page ---- */
+/* ----- register the Post CTA options that will be saved to the database from the Settings page ---- */
 
 function rum_post_cta_register_settings() {
-	/*
-	 * register the Post CTA Settings to be saved to the database
-	 * use the register_setting function
-	 * register_setting( $option_group, $option_name, $sanitize_callback )
-	 *
-	 */
+
+    // register_setting( $option_group, $option_name, $sanitize_callback )
 	register_setting(
 		'rum-post-cta-options',
 		'rum_post_cta_section',
 		'rum_post_cta_sanitize_options'
 	);
 
+    // add_settings_section( $id, $title, $callback, $page )
 	add_settings_section(
 		'rum_post_cta_section',
 		'Options',
@@ -95,13 +87,12 @@ function rum_post_cta_register_settings() {
 		'settings'
 	);
 
-// add_settings_field( $id, $title, $callback, $page, $section, $args );
-
+    // add_settings_field( $id, $title, $callback, $page, $section, $args )
 	add_settings_field(
 		'rum_post_cta_active',              // $id - used in CSS
 		'Activate Post Call to Action',     // $title - displayed on settings page
 		'rum_post_cta_setting_active',      // $callback - URL slug
-		'settings'                          // $page -
+		'settings'                          // $page - the page to display the field on
 	);
 
 	add_settings_field(
@@ -148,33 +139,35 @@ function rum_post_cta_register_settings() {
 
 }
 
-// define setting options array
-$rum_post_cta_options_arr    = array(
+// define setting options array for storage in the options database table
+$rum_post_cta_options_arr = array(
 
-    $rum_post_cta_options_arr['rum_post_cta_active'] = $rum_post_cta_active,
-    $rum_post_cta_options_arr['rum_post_cta_type'] = $rum_post_cta_type,
-    $rum_post_cta_options_arr['rum_post_cta_active_image'] = $rum_post_cta_active_image,
-    $rum_post_cta_options_arr['rum_post_cta_background_color'] = $rum_post_cta_background_color,
-    $rum_post_cta_options_arr['rum_post_cta_text_color'] = $rum_post_cta_text_color,
-    $rum_post_cta_options_arr['rum_post_cta_button_style'] = $rum_post_cta_button_style,
-    $rum_post_cta_options_arr['rum_post_cta_button_text'] = $rum_post_cta_button_text
+    $rum_post_cta_options_arr['rum_post_cta_active']            = $rum_post_cta_active,
+    $rum_post_cta_options_arr['rum_post_cta_type']              = $rum_post_cta_type,
+    $rum_post_cta_options_arr['rum_post_cta_active_image']      = $rum_post_cta_active_image,
+    $rum_post_cta_options_arr['rum_post_cta_background_color']  = $rum_post_cta_background_color,
+    $rum_post_cta_options_arr['rum_post_cta_text_color']        = $rum_post_cta_text_color,
+    $rum_post_cta_options_arr['rum_post_cta_button_style']      = $rum_post_cta_button_style,
+    $rum_post_cta_options_arr['rum_post_cta_button_text']       = $rum_post_cta_button_text
 
 );
 
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
-// if the array is not blank, retrieve the options from the array ( use get_option() )
+// if there are options stored in the database, retrieve the options from the array ( use get_option() )
 $rum_post_cta_options_arr = get_option( 'rum_post_options_arr' );
 
-if( $rum_post_cta_options_arr != "" ) {
-    $rum_post_cta_active            = $rum_post_cta_options_arr['rum_post_cta_active'];
-    $rum_post_cta_type              = $rum_post_cta_options_arr['rum_post_cta_type'];
-    $rum_post_cta_active_image      = $rum_post_cta_options_arr['rum_post_cta_active_image'];
-    $rum_post_cta_background_color  = $rum_post_cta_options_arr['rum_post_cta_background_color'];
-    $rum_post_cta_text_color        = $rum_post_cta_options_arr['rum_post_cta_text_color'];
-    $rum_post_cta_button_style      = $rum_post_cta_options_arr['rum_post_cta_button_style'];
-    $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
-}
+    if( $rum_post_cta_options_arr != "" ) {
+
+        $rum_post_cta_active            = $rum_post_cta_options_arr['rum_post_cta_active'];
+        $rum_post_cta_type              = $rum_post_cta_options_arr['rum_post_cta_type'];
+        $rum_post_cta_active_image      = $rum_post_cta_options_arr['rum_post_cta_active_image'];
+        $rum_post_cta_background_color  = $rum_post_cta_options_arr['rum_post_cta_background_color'];
+        $rum_post_cta_text_color        = $rum_post_cta_options_arr['rum_post_cta_text_color'];
+        $rum_post_cta_button_style      = $rum_post_cta_options_arr['rum_post_cta_button_style'];
+        $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
+
+    }
 
 // check to see if form already submitted
 //if( isset( $_POST['rum_post_cta_options_form_submitted'] ) ) {
@@ -203,7 +196,93 @@ if( $rum_post_cta_options_arr != "" ) {
 //
 //}
 
-// show message at top of screen when settings saved
+/* ----- TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages ----- */
+
+/* ----- output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
+
+function rum_post_cta_association () {
+
+	// set arguments for get_post_types()
+	$args = array(
+	   'public'   => true,
+	);
+
+    $post_types = get_post_types( $args, 'names' );
+
+// TODO - get the stored value for this settings option
+// TODO - compare the value stored with the list and add "selected" to the <option> that matches
+
+    foreach ( $post_types as $post_type ) {
+
+        $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
+    }
+    
+    return $options;
+}
+
+// Show posts of 'post', 'page' and 'movie' post types on home page
+//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
+//
+//function add_my_post_types_to_query( $query ) {
+//    if ( is_home() && $query->is_main_query() )
+//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
+//    return $query;
+//}
+
+/* ----- add color picker that can be used on the Settings screen ----- */
+
+add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
+
+function wp_enqueue_color_picker( ) {
+
+	// add the color picker css file
+	wp_enqueue_style( 'wp-color-picker' );
+
+	// include the custom jQuery file with WordPress Color Picker dependency
+	wp_enqueue_script(
+		'wp-color-picker-script',
+		plugins_url( 'js/jquery.custom.js', __FILE__ ),
+		array( 'wp-color-picker' ),
+		false,
+		true
+	);
+
+	// include the Iris color picker
+	wp_enqueue_script(
+		'iris',
+		admin_url( 'js/iris.min.js' ),
+		array(
+			'jquery-ui-draggable',
+			'jquery-ui-slider',
+			'jquery-touch-punch'
+		),
+		false,
+		1
+	);
+}
+
+/* ----- populate the button style drop down with Bootstrap button styles ----- */
+
+function rum_post_cta_button_types() {
+    $button_types = array(
+        'Default',
+        'Primary',
+        'Success',
+        'Info',
+        'Warning',
+        'Danger',
+        'Link'
+    );
+
+    foreach ( $button_types as $button_type ) {
+        $buttons .= '<option value"' . $button_type . '">' . $button_type . '</option>';
+    }
+
+    return $buttons;
+}
+
+/* ----- show message at top of Post Call-to-Action Settings screen when settings are saved ----- */
+
 function change( $data ) {
 
     $message = null;
@@ -242,115 +321,21 @@ function change( $data ) {
 }
 
 
-// TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages
-
-
-
-/* ----- Output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
-function rum_post_cta_association () {
-
-	// set arguments for get_post_types()
-	$args = array(
-	   'public'   => true,
-	);
-
-    $post_types = get_post_types( $args, 'names' );
-
-// TODO - get the stored value for this settings option
-// TODO - compare the value stored with the list and add "selected" to the <option> that matches
-
-    foreach ( $post_types as $post_type ) {
-
-        $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
-    }
-    
-    return $options;
-}
-
-// Show posts of 'post', 'page' and 'movie' post types on home page
-//add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
-//
-//function add_my_post_types_to_query( $query ) {
-//    if ( is_home() && $query->is_main_query() )
-//        $query->set( 'post_type', array( 'post', 'page', 'movie' ) );
-//    return $query;
-//}
-
-
-/* ----- add color picker that can be used on the Settings screen ----- */
-
-add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
-
-function wp_enqueue_color_picker( ) {
-
-	// Add the color picker css file
-	wp_enqueue_style( 'wp-color-picker' );
-
-	// Include our custom jQuery file with WordPress Color Picker dependency
-	wp_enqueue_script(
-		'wp-color-picker-script',
-		plugins_url( 'js/jquery.custom.js', __FILE__ ),
-		array( 'wp-color-picker' ),
-		false,
-		true
-	);
-
-	// Include the Iris color picker
-	wp_enqueue_script(
-		'iris',
-		admin_url( 'js/iris.min.js' ),
-		array(
-			'jquery-ui-draggable',
-			'jquery-ui-slider',
-			'jquery-touch-punch'
-		),
-		false,
-		1
-	);
-}
-
-// populate the button style drop down with Bootstrap button styles
-
-function rum_post_cta_button_types() {
-    $button_types = array(
-        'Default',
-        'Primary',
-        'Success',
-        'Info',
-        'Warning',
-        'Danger',
-        'Link'
-    );
-
-    foreach ( $button_types as $button_type ) {
-        $buttons .= '<option value"' . $button_type . '">' . $button_type . '</option>';
-    }
-
-    return $buttons;
-}
-
-
 /*
  * POST CALL TO ACTION META BOX ON POST EDIT SCREEN
  *
  * /
 
-/* ----- add the meta box to post sidebars ----- */
+/* ----- add a Post Call-to-Action meta box to New Post and Edit Post sidebars ----- */
 
 add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 function rum_post_cta_meta_box_init() {
 
-    /*
-     * add a Post Call To Action meta box to New Post and Edit Post screens
-     * use the add_meta_box function
-     * add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
-     *
-     */
-
+    // add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
     add_meta_box(
         'rum_post-cta-meta-box',                                    // $id
-        __('Post Call to Action', 'rum_post_cta_textdomain'),      // $title
+        __('Post Call to Action', 'rum-post-cta-textdomain'),       // $title
         'rum_post_cta_meta_box_callback',                           // $callback
         'post',                                                     // $page
         'side',                                                     // $context
@@ -361,8 +346,11 @@ function rum_post_cta_meta_box_init() {
 
 
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
-// pass through the selected rum_post_cta_association post type
-// list the titles of all the posts of that type
+
+/* ----- TODO - pass through the selected rum_post_cta_association post type ----- */
+
+/* ----- TODO - list the titles of all the posts of that type ----- */
+
 function rum_post_cta_meta_box_list() {
 
     echo '1 box goes here';
@@ -382,7 +370,8 @@ function rum_post_cta_meta_box_list() {
     echo '</select>';
 }
 
-/* ----- outputs the content of the meta box ----- */
+/* ----- output the content of the meta box ----- */
+
 function rum_post_cta_meta_box_callback(){
 
         echo '<?php rum_post_cta_meta_box_list ?>';
@@ -391,9 +380,7 @@ function rum_post_cta_meta_box_callback(){
 
 };
 
-
-
-// TODO -- save the selection
+/* ----- TODO -- save the meta box selection ----- */
 
 
 /*
@@ -404,12 +391,8 @@ function rum_post_cta_meta_box_callback(){
 /* ----- insert CTA box below content ----- */
 
 function rum_post_cta_box( $content ) {
-	/*
-	 * Checks to make sure code executes only on
-	 * singles pages and inside of the main Loop
-	 *
-	 */
 
+	// checks to make sure code executes only on singles pages and inside of the main Loop
 	if( is_singular() && is_main_query() ) {
 
 		$rum_post_cta_box = '/includes/display-functions.php' ;
