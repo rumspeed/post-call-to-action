@@ -348,21 +348,23 @@ function rum_post_cta_meta_box_init() {
 
 function rum_post_cta_meta_box_list() {
 
-    echo '1 box goes here';
+    // The Query
+    $the_query = new WP_Query( 'rum_post_cta_type' );
 
-    $cta_query = new WP_Query('rum_post_cta_association');
+    // The Loop
+    if ( $the_query->have_posts() ) {
+        echo '<ul>';
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            echo '<li>' . get_the_title() . '</li>';
+        }
+        echo '</ul> in the loop.';
+    } else {
+        // no posts found
+    }
+    // restore original post data
+    wp_reset_postdata();
 
-    echo '<select name="posttype">';
-    echo '2 box goes here';
-
-    while ($cta_query->have_posts()) : $cta_query->the_post();
-        echo '<option value="' . $post->ID . '">';
-        the_title();
-        echo '3 box goes here';
-        echo '</option>';
-    endwhile;
-
-    echo '</select>';
 }
 
 add_action( 'register_sidebar_widget', 'rum_post_cta_meta_box_list' );
@@ -375,7 +377,7 @@ function rum_post_cta_meta_box_callback() {
     ?>
     <select name="rum_post_cta_selection" id="rum_post-cta-selection">
         <option selected=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
-        <?php echo rum_post_cta_association() ?>
+        <?php echo rum_post_cta_meta_box_list() ?>
     </select>
     <?php
 
