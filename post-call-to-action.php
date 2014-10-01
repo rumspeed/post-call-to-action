@@ -155,7 +155,7 @@ $rum_post_cta_options_arr = array(
 update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
 // if there are options stored in the database, retrieve the options from the array ( use get_option() )
-$rum_post_cta_options_arr = get_option( 'rum_post_options_arr' );
+$rum_post_cta_options_arr = get_option( 'rum_post_cta_options_arr' );
 
     if( $rum_post_cta_options_arr != "" ) {
 
@@ -196,7 +196,7 @@ $rum_post_cta_options_arr = get_option( 'rum_post_options_arr' );
 //
 //}
 
-/* ----- TODO - have activate checkbox control whether or not meta box appears on New Post and Edit Post pages ----- */
+//var_dump( $rum_post_cta_options_arr );
 
 /* ----- output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
 
@@ -327,16 +327,19 @@ add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 function rum_post_cta_meta_box_init() {
 
-    // add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
-    add_meta_box(
-        'rum_post-cta-meta-box',                                    // $id
-        __('Post Call to Action', 'rum-post-cta-textdomain'),       // $title
-        'rum_post_cta_meta_box_callback',                           // $callback
-        'post',                                                     // $page
-        'side',                                                     // $context
-        'high'                                                      // $priority
-    //	'rum_post_cta_meta_box_callback_args'                       // $callback_args
-    );
+    if(get_option('rum_post_cta_active')) {
+
+        // add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
+        add_meta_box(
+            'rum_post-cta-meta-box',                                    // $id
+            __('Post Call to Action', 'rum-post-cta-textdomain'),       // $title
+            'rum_post_cta_meta_box_callback',                           // $callback
+            'post',                                                     // $page
+            'side',                                                     // $context
+            'high'                                                      // $priority
+        //	'rum_post_cta_meta_box_callback_args'                       // $callback_args
+        );
+    }
 }
 
 
@@ -344,12 +347,30 @@ function rum_post_cta_meta_box_init() {
 
 /* ----- TODO - pass through the selected rum_post_cta_association post type ----- */
 
+// update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
+
 /* ----- TODO - list the titles of all the posts of that type ----- */
 
 function rum_post_cta_meta_box_list() {
 
+
+
+//    $option = get_option( ‘option_name’ );
+//    $option_i_want = $option[‘array_key’};
+
+    $option = get_option( 'rum_post_cta_type' );
+//    $rum_post_cta_associated = $option['rum_post_cta_type'];
+
+    var_dump( $option );
+
+    //$rum_post_cta_type = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->options" );
+
+//    $rum_post_cta_options_arr = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rum_post_cta_options'", ARRAY_A);
+//    echo $rum_post_cta_options_arr['option_value'];
+    echo '<p>Selected post type is ' . $option . '</p>';
+
     // The Query
-    $the_query = new WP_Query( 'rum_post_cta_type' );
+    $the_query = new WP_Query( $rum_post_cta_associated );
 
     // The Loop
     if ( $the_query->have_posts() ) {
@@ -385,7 +406,7 @@ function rum_post_cta_meta_box_callback() {
     $rum_post_cta_options = get_option( 'rum_post_cta_options_arr' );
     // display text message
     printf( __( '<p>If you would like to display a call-to-action bar at the bottom of your post,
-        select an available %s from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_association );
+        select an available * %s * from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_associated );
     // save the selection
 
 };
