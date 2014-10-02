@@ -10,3 +10,7 @@
 	
 	// Delete settings page options from options table
 	delete_option( 'rum_post_cta_plugin_options' );
+
+
+// TODO - remove the meta field that is stored on EACH blog post from the custom metabox
+
