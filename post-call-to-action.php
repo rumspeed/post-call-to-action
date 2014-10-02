@@ -33,6 +33,7 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 include_once( 'includes/settings.php' );
 include_once( 'includes/metabox.php' );
 include_once( 'includes/display.php' );
+include_once( 'includes/helper-functions.php' );
 
 
 
