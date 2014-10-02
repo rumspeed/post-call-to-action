@@ -175,10 +175,6 @@ print_r($plugin_option_array);
 	<div class="wrap">
 		
 		<div id="icon-options-general" class="icon32"></div>
-	    <!-- Message box -->
-	        <div id="message" class="updated">
-	            <p><strong><?php _e('Settings saved.') ?></strong></p>
-	        </div>
 		<h2><?php echo __( 'Post Call to Action', 'rum-post-cta-textdomain' ); ?></h2>
 
 	    <!-- Plugin description -->
