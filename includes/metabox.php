@@ -58,6 +58,9 @@ function rum_post_cta_meta_box_callback( $post, $box) {
 function rum_post_cta_meta_box_list() {
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
+    // initialize variables
+    $options             = '';
+
 // TODO - pass through the selected rum_post_cta_association post type ----- */
     // get plugin option array and store in a variable
     $plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
@@ -78,12 +81,12 @@ function rum_post_cta_meta_box_list() {
     // execute the query
     $the_query = new WP_Query( $args );
 
-print_r($the_query);
+//print_r($the_query);
 
 // The Loop
 while ( $the_query->have_posts() ) {
     $the_query->the_post();
-    echo '<li>' . get_the_title() . '</li>';
+    $options .= get_the_title() . '<br>';
 }
 
 
@@ -112,6 +115,8 @@ while ( $the_query->have_posts() ) {
     // restore original post data
     wp_reset_postdata();
 
+
+return $options;
 }
 add_action( 'register_sidebar_widget', 'rum_post_cta_meta_box_list' );
 
