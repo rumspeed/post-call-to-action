@@ -3,7 +3,7 @@
 
 
 // Display and fill the form fields for the plugin admin page
-function rum_sst_options_page() {
+function rum_post_cta_options_page() {
 
 
 ?>
