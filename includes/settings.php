@@ -144,24 +144,30 @@ function rum_post_cta_options_page() {
 
 	// get plugin option array and store in a variable
 	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+
+
+// DISPLAY ARRAY FOR DEVELOPMENT PURPOSES 
 print_r($plugin_option_array);
+
 
 	// fetch individual values from the plugin option variable array
 	$activate_flag      = $plugin_option_array[ 'activate' ];
 	$post_type			= $plugin_option_array[ 'post_type' ];
+
+
+// REMAINING FIELD VALUES FROM ARRAY
+//		'featured_image'    => '0',
+//		'bg_color'          => '#FFFFFF',
+//		'text_color'        => '#A0244E',
+//		'button_style'      => '',
+//		'button_text'       => 'Learn more...'
+
 
 	// if activate is checked, set the value for the form field 
 	if ( $activate_flag == 1 ) {
 		$activate = ' checked';
 	}
 
-//		'activate'          => '0',
-//		'post_type'         => '',
-//		'featured_image'    => '0',
-//		'bg_color'          => '#FFFFFF',
-//		'text_color'        => '#A0244E',
-//		'button_style'      => '',
-//		'button_text'       => 'Learn more...'
 
 ?>
 
