@@ -35,27 +35,6 @@ include_once( 'includes/metabox.php' );
 include_once( 'includes/display.php' );
 
 
-/*
- * POST CALL TO ACTION SETTINGS PAGE
- *
- */
-
-/* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
-
-function rum_post_cta_menu() {
-
-	// add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
-	add_options_page(
-		'Post Call to Action',
-		'Post CTA',
-		'manage_options',
-		'rum-post-cta',
-		'rum_post_cta_options_page'
-	);
-
-}
-
-add_action( 'admin_menu', 'rum_post_cta_menu' );
 
 
 
