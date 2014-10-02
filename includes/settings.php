@@ -104,7 +104,7 @@ function wp_enqueue_color_picker( ) {
 	// include the custom jQuery file with WordPress Color Picker dependency
 	wp_enqueue_script(
 		'wp-color-picker-script',
-		plugins_url( 'js/jquery.custom.js', __FILE__ ),
+		RUM_POST_CTA_PLUGIN_URI . '/js/jquery.custom.js',
 		array( 'wp-color-picker' ),
 		false,
 		true
