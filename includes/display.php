@@ -7,8 +7,9 @@
  *
  */
 
-/* ----- insert CTA box below content ----- */
 
+
+/* ----- insert CTA box below content ----- */
 function rum_post_cta_box( $content ) {
 
 	// checks to make sure code executes only on singles pages and inside of the main Loop
@@ -22,7 +23,6 @@ function rum_post_cta_box( $content ) {
 	}
 	return $content;
 }
-
 add_filter( 'the_content', 'rum_post_cta_box' );
 
 
