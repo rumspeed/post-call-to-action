@@ -44,8 +44,10 @@ function rum_post_cta_meta_box_callback( $post, $box) {
     <?php
 
     // display text message
+    $plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
+    $post_cta_post_type  = $plugin_option_array[ 'post_type' ];
     printf( __( '<p>If you would like to display a call-to-action bar at the bottom of your post,
-        select an available * %s * from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $rum_post_cta_associated );
+        select an available %s from the drop down menu.</p>', 'rum-post-cta-text-domain' ), $post_cta_post_type );
 
 /* ----- TODO -- save the meta box selection ----- */
     // save the selection
@@ -93,7 +95,7 @@ function rum_post_cta_meta_box_list() {
 
 
 // TODO - is this necessary?
-    wp_reset_postdata();
+//    wp_reset_postdata();
 
 
     return $options;
