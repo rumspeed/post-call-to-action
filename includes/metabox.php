@@ -61,15 +61,13 @@ function rum_post_cta_meta_box_list() {
     // initialize variables
     $options             = '';
 
-// TODO - pass through the selected rum_post_cta_association post type ----- */
+
     // get plugin option array and store in a variable
     $plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
 
 
     // fetch values from the plugin option variable array
     $post_cta_post_type  = $plugin_option_array[ 'post_type' ];
-
-//    echo '<p>Selected post type is ' . $post_cta_post_type . '</p>';
 
 
     // set query arguments
@@ -78,46 +76,24 @@ function rum_post_cta_meta_box_list() {
         'nopaging'  => true
     );
 
+
     // execute the query
-    $the_query = new WP_Query( $args );
-
-//print_r($the_query);
-
-// The Loop
-while ( $the_query->have_posts() ) {
-    $the_query->the_post();
-    $post_title = get_the_title();
-    $options .= '<option value="' . $post_title . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
-}
-
-
-// SIMILAR LOOP TO WHAT WE USED ON SETTINGS PAGE - KEEP FOR LATER
-//    foreach ( $post_types as $post_type ) {
-//
-//// TODO - compare the value stored with the list and add "selected" to the <option> that matches
-//        $options .= '<option value="' . $post_type . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
-//    }
-
-
+    $cta_post_query = new WP_Query( $args );
 
 
     // The Loop
-    if ( $the_query->have_posts() ) {
-        echo '<ul>';
-        while ( $the_query->have_posts() ) {
-            $the_query->the_post();
-// TODO - list the titles of all the posts of that type ----- */
-            echo '<li>' . get_the_title() . '</li>';
-        }
-        echo '</ul> in the loop.';
-    } else {
-        // no posts found
+    while ( $cta_post_query->have_posts() ) {
+        $cta_post_query->the_post();
+        $post_title = get_the_title();
+        $options .= '<option value="' . $post_title . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
     }
-    // restore original post data
+
+
+// TODO - is this necessary?
     wp_reset_postdata();
 
 
-return $options;
+    return $options;
 }
 
 
