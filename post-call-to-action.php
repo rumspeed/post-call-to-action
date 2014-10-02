@@ -65,106 +65,106 @@ function rum_post_cta_activate_plugin() {
 
 
 
-/* ----- register the Post CTA options that will be saved to the database from the Settings page ---- */
+///* ----- register the Post CTA options that will be saved to the database from the Settings page ---- */
+//
+//function rum_post_cta_register_settings() {
+//
+//    // register_setting( $option_group, $option_name, $sanitize_callback )
+//	register_setting(
+//		'rum-post-cta-options',
+//		'rum_post_cta_section',
+//		'rum_post_cta_sanitize_options'
+//	);
+//
+//    // add_settings_section( $id, $title, $callback, $page )
+//	add_settings_section(
+//		'rum_post_cta_section',
+//		'Options',
+//		'rum_post_cta_section',
+//		'settings'
+//	);
+//
+//    // add_settings_field( $id, $title, $callback, $page, $section, $args )
+//	add_settings_field(
+//		'rum_post_cta_active',              // $id - used in CSS
+//		'Activate Post Call to Action',     // $title - displayed on settings page
+//		'rum_post_cta_setting_active',      // $callback - URL slug
+//		'settings'                          // $page - the page to display the field on
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_type',
+//		'Post Type for CTA Association',
+//		'rum_post_cta_setting_type',
+//		'settings'
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_active_image',
+//		'Display Featured Image',
+//		'rum_post_cta_setting_active_image',
+//		'settings'
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_background_color',
+//		'Background Color',
+//		'rum_post_cta_background_color',
+//		'settings'
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_text_color',
+//		'Text Color',
+//		'rum_post_cta_text_color',
+//		'settings'
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_button_style',
+//		'Button Style',
+//		'rum_post_cta_button_style',
+//		'settings'
+//	);
+//
+//	add_settings_field(
+//		'rum_post_cta_button_text',
+//		'Button Text',
+//		'rum_post_cta_button_text',
+//		'settings'
+//	);
+//
+//}
 
-function rum_post_cta_register_settings() {
+//// define setting options array for storage in the options database table
+//$rum_post_cta_options_arr = array(
+//
+//    $rum_post_cta_options_arr['rum_post_cta_active']            = $rum_post_cta_active,
+//    $rum_post_cta_options_arr['rum_post_cta_type']              = $rum_post_cta_type,
+//    $rum_post_cta_options_arr['rum_post_cta_active_image']      = $rum_post_cta_active_image,
+//    $rum_post_cta_options_arr['rum_post_cta_background_color']  = $rum_post_cta_background_color,
+//    $rum_post_cta_options_arr['rum_post_cta_text_color']        = $rum_post_cta_text_color,
+//    $rum_post_cta_options_arr['rum_post_cta_button_style']      = $rum_post_cta_button_style,
+//    $rum_post_cta_options_arr['rum_post_cta_button_text']       = $rum_post_cta_button_text
+//
+//);
+//
+//update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
-    // register_setting( $option_group, $option_name, $sanitize_callback )
-	register_setting(
-		'rum-post-cta-options',
-		'rum_post_cta_section',
-		'rum_post_cta_sanitize_options'
-	);
-
-    // add_settings_section( $id, $title, $callback, $page )
-	add_settings_section(
-		'rum_post_cta_section',
-		'Options',
-		'rum_post_cta_section',
-		'settings'
-	);
-
-    // add_settings_field( $id, $title, $callback, $page, $section, $args )
-	add_settings_field(
-		'rum_post_cta_active',              // $id - used in CSS
-		'Activate Post Call to Action',     // $title - displayed on settings page
-		'rum_post_cta_setting_active',      // $callback - URL slug
-		'settings'                          // $page - the page to display the field on
-	);
-
-	add_settings_field(
-		'rum_post_cta_type',
-		'Post Type for CTA Association',
-		'rum_post_cta_setting_type',
-		'settings'
-	);
-
-	add_settings_field(
-		'rum_post_cta_active_image',
-		'Display Featured Image',
-		'rum_post_cta_setting_active_image',
-		'settings'
-	);
-
-	add_settings_field(
-		'rum_post_cta_background_color',
-		'Background Color',
-		'rum_post_cta_background_color',
-		'settings'
-	);
-
-	add_settings_field(
-		'rum_post_cta_text_color',
-		'Text Color',
-		'rum_post_cta_text_color',
-		'settings'
-	);
-
-	add_settings_field(
-		'rum_post_cta_button_style',
-		'Button Style',
-		'rum_post_cta_button_style',
-		'settings'
-	);
-
-	add_settings_field(
-		'rum_post_cta_button_text',
-		'Button Text',
-		'rum_post_cta_button_text',
-		'settings'
-	);
-
-}
-
-// define setting options array for storage in the options database table
-$rum_post_cta_options_arr = array(
-
-    $rum_post_cta_options_arr['rum_post_cta_active']            = $rum_post_cta_active,
-    $rum_post_cta_options_arr['rum_post_cta_type']              = $rum_post_cta_type,
-    $rum_post_cta_options_arr['rum_post_cta_active_image']      = $rum_post_cta_active_image,
-    $rum_post_cta_options_arr['rum_post_cta_background_color']  = $rum_post_cta_background_color,
-    $rum_post_cta_options_arr['rum_post_cta_text_color']        = $rum_post_cta_text_color,
-    $rum_post_cta_options_arr['rum_post_cta_button_style']      = $rum_post_cta_button_style,
-    $rum_post_cta_options_arr['rum_post_cta_button_text']       = $rum_post_cta_button_text
-
-);
-
-update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
-
-// if there are options stored in the database, retrieve the options from the array ( use get_option() )
-$rum_post_cta_options_arr = get_option( 'rum_post_cta_options_arr' );
-
-    if( $rum_post_cta_options_arr != "" ) {
-
-        $rum_post_cta_active            = $rum_post_cta_options_arr['rum_post_cta_active'];
-        $rum_post_cta_type              = $rum_post_cta_options_arr['rum_post_cta_type'];
-        $rum_post_cta_active_image      = $rum_post_cta_options_arr['rum_post_cta_active_image'];
-        $rum_post_cta_background_color  = $rum_post_cta_options_arr['rum_post_cta_background_color'];
-        $rum_post_cta_text_color        = $rum_post_cta_options_arr['rum_post_cta_text_color'];
-        $rum_post_cta_button_style      = $rum_post_cta_options_arr['rum_post_cta_button_style'];
-        $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
-
-    }
+//// if there are options stored in the database, retrieve the options from the array ( use get_option() )
+//$rum_post_cta_options_arr = get_option( 'rum_post_cta_options_arr' );
+//
+//    if( $rum_post_cta_options_arr != "" ) {
+//
+//        $rum_post_cta_active            = $rum_post_cta_options_arr['rum_post_cta_active'];
+//        $rum_post_cta_type              = $rum_post_cta_options_arr['rum_post_cta_type'];
+//        $rum_post_cta_active_image      = $rum_post_cta_options_arr['rum_post_cta_active_image'];
+//        $rum_post_cta_background_color  = $rum_post_cta_options_arr['rum_post_cta_background_color'];
+//        $rum_post_cta_text_color        = $rum_post_cta_options_arr['rum_post_cta_text_color'];
+//        $rum_post_cta_button_style      = $rum_post_cta_options_arr['rum_post_cta_button_style'];
+//        $rum_post_cta_button_text       = $rum_post_cta_options_arr['rum_post_cta_button_text'];
+//
+//    }
 
 // check to see if form already submitted
 //if( isset( $_POST['rum_post_cta_options_form_submitted'] ) ) {
