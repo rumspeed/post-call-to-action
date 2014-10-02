@@ -38,6 +38,33 @@ include_once( 'includes/display.php' );
 
 
 
+
+// Hook will fire upon activation - we are using it to set default option values
+register_activation_hook( __FILE__, 'rum_post_cta_activate_plugin' );
+
+// Add options and populate default values on first load
+function rum_post_cta_activate_plugin() {
+
+	// populate plugin options array
+	$rum_post_cta_plugin_options = array(
+
+		'activate'          => '0',
+		'post_type'         => '',
+		'featured_image'    => '0',
+		'bg_color'          => '#FFFFFF',
+		'text_color'        => '#A0244E',
+		'button_style'      => '',
+		'button_text'       => 'Learn more...'
+		);
+
+	// create field in WP_options to store all plugin data in one field
+	add_option( 'rum_post_cta_plugin_options', $rum_post_cta_plugin_options );
+
+}
+
+
+
+
 /* ----- register the Post CTA options that will be saved to the database from the Settings page ---- */
 
 function rum_post_cta_register_settings() {
