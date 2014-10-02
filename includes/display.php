@@ -23,7 +23,7 @@ function rum_post_cta_box( $content ) {
 	return $content;
 }
 
-add_filter( ' the_content', 'rum_post_cta_box' );
+add_filter( 'the_content', 'rum_post_cta_box' );
 
 
 
