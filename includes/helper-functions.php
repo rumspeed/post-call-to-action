@@ -2,19 +2,21 @@
 /*
  * HELPER FUNCTIONS
  *
- * /
+ */
 
-/* ----- add a Post Call-to-Action meta box to New Post and Edit Post sidebars ----- */
+
+
+// set the activation flag for use in metabox.php and display.php
 function rum_post_cta_activation_check() {
 
     // initialize variables
-    $status             = false;
+    $status             = FALSE;
     $activate_flag      = '';
     $post_type          = '';
 
 
     // get plugin option array and store in a variable
-    $plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+    $plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
 
 
     // fetch values from the plugin option variable array
@@ -22,10 +24,11 @@ function rum_post_cta_activation_check() {
     $post_type          = $plugin_option_array[ 'post_type' ];
 
 
+    // set the flag for use in metabox.php and display.php
     if( $activate_flag != '' && $post_type != '' ) {
-        $status = false;
+        $status = TRUE;
     } else {
-        $status = true;
+        $status = FALSE;
     }
 
     return $status;
