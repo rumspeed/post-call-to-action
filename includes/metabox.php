@@ -33,7 +33,7 @@ add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 
 /* ----- output the content of the meta box ----- */
-function rum_post_cta_meta_box_callback() {
+function rum_post_cta_meta_box_callback( $post, $box) {
 
     // display a dropdown list
     ?>
