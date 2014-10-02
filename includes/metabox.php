@@ -8,9 +8,6 @@
  * /
 
 /* ----- add a Post Call-to-Action meta box to New Post and Edit Post sidebars ----- */
-
-add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
-
 function rum_post_cta_meta_box_init() {
 
     if(get_option('rum_post_cta_active')) {
@@ -27,19 +24,18 @@ function rum_post_cta_meta_box_init() {
         );
     }
 }
+add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
-/* ----- TODO - pass through the selected rum_post_cta_association post type ----- */
 
 // update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
-/* ----- TODO - list the titles of all the posts of that type ----- */
 
 function rum_post_cta_meta_box_list() {
 
-
+// TODO - pass through the selected rum_post_cta_association post type ----- */
 
 //    $option = get_option( ‘option_name’ );
 //    $option_i_want = $option[‘array_key’};
@@ -58,11 +54,13 @@ function rum_post_cta_meta_box_list() {
     // The Query
     $the_query = new WP_Query( $rum_post_cta_associated );
 
+
     // The Loop
     if ( $the_query->have_posts() ) {
         echo '<ul>';
         while ( $the_query->have_posts() ) {
             $the_query->the_post();
+// TODO - list the titles of all the posts of that type ----- */
             echo '<li>' . get_the_title() . '</li>';
         }
         echo '</ul> in the loop.';
@@ -73,11 +71,12 @@ function rum_post_cta_meta_box_list() {
     wp_reset_postdata();
 
 }
-
 add_action( 'register_sidebar_widget', 'rum_post_cta_meta_box_list' );
 
-/* ----- output the content of the meta box ----- */
 
+
+
+/* ----- output the content of the meta box ----- */
 function rum_post_cta_meta_box_callback() {
 
     // display a dropdown list
