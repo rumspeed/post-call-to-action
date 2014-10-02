@@ -208,13 +208,11 @@ print_r($plugin_option_array);
 							<div class="inside">
 
 							<form name="rum_post_cta_options_form" method="post" action="options.php">
+
 <?php 
 settings_fields( 'rum_post_cta_option_group' );
 do_settings_sections( 'rum-post-cta' );
 ?>								
-
-							<?php //settings_fields( 'rum_post_cta_options' ); ?>
-							<?php //$rum_post_cta_options = get_option( 'rum_post_cta_options_arr' ); ?>
 
 								<table class="form-table">
 									<tr valign="top">
