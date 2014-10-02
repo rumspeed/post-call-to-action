@@ -36,24 +36,26 @@ function rum_post_cta_meta_box_list() {
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
 // TODO - pass through the selected rum_post_cta_association post type ----- */
+    // get plugin option array and store in a variable
+    $plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
 
 
-//    $option = get_option( ‘option_name’ );
-//    $option_i_want = $option[‘array_key’};
+    // fetch values from the plugin option variable array
+    $post_cta_post_type  = $plugin_option_array[ 'post_type' ];
 
-    $option = get_option( 'rum_post_cta_type' );
-//    $rum_post_cta_associated = $option['rum_post_cta_type'];
+//    echo '<p>Selected post type is ' . $post_cta_post_type . '</p>';
 
-    var_dump( $option );
 
-    //$rum_post_cta_type = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->options" );
+    // set query arguments
+    $args = array(
+        'post_type' => $post_cta_post_type,
+        'nopaging'  => true
+    );
 
-//    $rum_post_cta_options_arr = $wpdb->get_row("SELECT * FROM $wpdb->options WHERE option_name = 'rum_post_cta_options'", ARRAY_A);
-//    echo $rum_post_cta_options_arr['option_value'];
-    echo '<p>Selected post type is ' . $option . '</p>';
+    // execute the query
+    $the_query = new WP_Query( $args );
 
-    // The Query
-    $the_query = new WP_Query( $rum_post_cta_associated );
+
 
 
     // The Loop
