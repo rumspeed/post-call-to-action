@@ -118,10 +118,5 @@ while ( $the_query->have_posts() ) {
 
 return $options;
 }
-add_action( 'register_sidebar_widget', 'rum_post_cta_meta_box_list' );
-
-
-
-
 
 
