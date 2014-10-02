@@ -181,16 +181,17 @@ function rum_post_cta_association () {
         '_builtin' => false
 	);
 
+	// get required post types and set into an array
     $post_types = get_post_types( $args, 'names' );
+
+    // include page to the array because it was excluded in the arguments with "_builtin"
+    $post_types[page] = 'page';
 
     foreach ( $post_types as $post_type ) {
 
 // TODO - compare the value stored with the list and add "selected" to the <option> that matches
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
     }
-
-    // include page as a post type because it was excluded in the arguments with "_builtin"
-    $options .= '<option value="page">page</option>';
 
     return $options;
 }
