@@ -172,6 +172,9 @@ $rum_post_cta_options_arr = get_option( 'rum_post_cta_options_arr' );
 
 function rum_post_cta_association () {
 
+// TODO - get the stored value for this settings option
+
+
 	// set arguments for get_post_types()
 	$args = array(
 	   'public'   => true,
@@ -182,6 +185,7 @@ function rum_post_cta_association () {
 
     foreach ( $post_types as $post_type ) {
 
+// TODO - compare the value stored with the list and add "selected" to the <option> that matches
         $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
     }
 
@@ -191,8 +195,6 @@ function rum_post_cta_association () {
     return $options;
 }
 
-// TODO - get the stored value for this settings option
-// TODO - compare the value stored with the list and add "selected" to the <option> that matches
 
 /* ----- add color picker that can be used on the Settings screen ----- */
 
