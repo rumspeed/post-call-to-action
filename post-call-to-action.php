@@ -57,17 +57,7 @@ function rum_post_cta_menu() {
 
 add_action( 'admin_menu', 'rum_post_cta_menu' );
 
-/* ----- check permissions and add the screen with the Post Call-to-Action settings ----- */
 
-function rum_post_cta_options_page() {
-
-	if( !current_user_can( 'manage_options' ) ) {
-		wp_die( 'You do not sufficient permission to access this page.' );
-	}
-
-	require( 'includes/settings.php' );
-
-}
 
 /* ----- register the Post CTA options that will be saved to the database from the Settings page ---- */
 
