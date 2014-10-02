@@ -2,6 +2,29 @@
 
 
 
+// Add options and populate default values on first load
+function rum_post_cta_activate_plugin() {
+
+	// populate plugin options array
+	$rum_post_cta_plugin_options = array(
+
+		'activate'          => '0',
+		'post_type'         => '',
+		'featured_image'    => '0',
+		'bg_color'          => '#FFFFFF',
+		'text_color'        => '#A0244E',
+		'button_style'      => '',
+		'button_text'       => 'Learn more...'
+		);
+
+	// create field in WP_options to store all plugin data in one field
+	add_option( 'rum_post_cta_plugin_options', $rum_post_cta_plugin_options );
+
+}
+
+
+
+
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
 function rum_post_cta_menu() {
 
