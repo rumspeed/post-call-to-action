@@ -5,6 +5,10 @@
 // Display and fill the form fields for the plugin admin page
 function rum_post_cta_options_page() {
 
+	// check permissions and add the screen with the Post Call-to-Action settings
+	if( !current_user_can( 'manage_options' ) ) {
+		wp_die( 'You do not sufficient permission to access this page.' );
+	}
 
 ?>
 
