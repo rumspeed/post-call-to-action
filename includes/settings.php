@@ -153,39 +153,29 @@ function rum_post_cta_options_page() {
 	// check permissions and add the screen with the Post Call-to-Action settings
 	if( !current_user_can( 'manage_options' ) ) {
 		wp_die( 'You do not sufficient permission to access this page.' );
-	}
+}
 
-
-
-	// get plugin option array and store in a variable
-	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
-
+// get plugin option array and store in a variable
+$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
 
 // DISPLAY ARRAY FOR DEVELOPMENT PURPOSES 
 print_r($plugin_option_array);
 
-
 	// fetch individual values from the plugin option variable array
 	$activate_flag      = $plugin_option_array[ 'activate' ];
 	$post_type			= $plugin_option_array[ 'post_type' ];
-
-
-// REMAINING FIELD VALUES FROM ARRAY
-//		'featured_image'    => '0',
-//		'bg_color'          => '#FFFFFF',
-//		'text_color'        => '#A0244E',
-//		'button_style'      => '',
-//		'button_text'       => 'Learn more...'
-
+    $featured_image     = $plugin_option_array[ 'featured_image' ];
+    $bg_color           = $plugin_option_array[ 'bg_color' ];
+    $text_color         = $plugin_option_array[ 'text_color' ];
+    $button_style       = $plugin_option_array[ 'button_style' ];
+    $button_text        = $plugin_option_array[ 'button_text' ];
 
 	// if activate is checked, set the value for the form field 
 	if ( $activate_flag == 1 ) {
 		$activate = ' checked';
 	}
 
-
 ?>
-
 
 	<div class="wrap">
 		
@@ -225,7 +215,7 @@ do_settings_sections( 'rum-post-cta' );
 										<td><fieldset>
 											<legend class="screen-reader-text"><span><?php echo __( 'Activate "Post Call-to-Action"', 'rum-post-cta-textdomain' ); ?></span></legend>
 											<label for="rum_post_cta_active">
-												<input name="rum_post_cta_plugin_options[activate]" type="checkbox" value="1" <?php checked( '1', $activate_flag );            ?> />
+												<input name="rum_post_cta_plugin_options[activate]" type="checkbox" value="1" <?php checked( '1', $activate_flag ); ?> />
 											</label>
 										</fieldset></td>
 									</tr>
@@ -240,29 +230,29 @@ do_settings_sections( 'rum-post-cta' );
 										<td scope="row"><label for="rum_post_cta_image_image"><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><fieldset>
 											<legend class="screen-reader-text"><span><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></span></legend>
-											<label for="rum_post_cta_active_image">
-												<input name="rum_post_cta_options_arr[rum_post_active_image]" type="checkbox" id="rum_post_cta_active_image" value="<?php echo esc_attr( $rum_post_cta_options_arr['rum_post_cta_active'] ); ?>"  />
+											<label for="rum_post_cta_featured_image">
+												<input name="rum_post_cta_plugin_options[featured_image]" type="checkbox" value="1" <?php checked( '1', $featured_image ); ?>"  />
 											</label>
 										</fieldset></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="background_color"><?php echo __( 'Background Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="post_cta_background_color" id="post-cta-background-color" class="color-picker" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="post-cta-text-color" id="post-cta-text-color" class="color-picker" value="<?php if ( isset ( $rum_post_cta_stored_meta[ 'meta-color'] ) ) echo $rum_post_cta_stored_meta['meta-color'][0]; ?>" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php if ( isset ( $rum_post_cta_stored_meta[ 'meta-color'] ) ) echo $rum_post_cta_stored_meta['meta-color'][0]; ?>" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><select name="post_cta_button_style" id="post-cta-button-style">
+										<td><select name="rum_post_cta_plugin_options[button_style]">
 											<option selected="selected" value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
 	                                            <?php echo rum_post_cta_button_types() ?>
 										</select></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_text"><?php echo __( 'Button Text', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( '', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
+										<td><input name="rum_post_cta_plugin_options[button_text]" type="text" value="<?php echo __( '', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
 									</tr>
 								</table>
 
