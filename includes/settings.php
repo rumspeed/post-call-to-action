@@ -221,7 +221,7 @@ function rum_post_cta_options_page() {
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_text"><?php echo __( 'Button Text', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( 'Learn more...', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
+										<td><input name="post_cta_button_text" id="post-cta-button-text" type="text" value="<?php echo __( '', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
 									</tr>
 								</table>
 
