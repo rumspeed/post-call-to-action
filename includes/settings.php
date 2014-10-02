@@ -56,7 +56,12 @@ add_action( 'admin_menu', 'rum_post_cta_menu' );
 /* ----- output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
 function rum_post_cta_association () {
 
-// TODO - get the stored value for this settings option
+	// get plugin option array and store in a variable
+	$plugin_option_array       = get_option( 'rum_post_cta_plugin_options' );
+
+
+	// fetch individual values from the plugin option variable array
+	$cta_post_type             = $plugin_option_array[ 'post_type' ];
 
 
 	// set arguments for get_post_types()
@@ -74,7 +79,7 @@ function rum_post_cta_association () {
     foreach ( $post_types as $post_type ) {
 
 // TODO - compare the value stored with the list and add "selected" to the <option> that matches
-        $options .= '<option value="' . $post_type . '">' . $post_type . '</option>';
+        $options .= '<option value="' . $post_type . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
     }
 
     return $options;
@@ -226,8 +231,8 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><select name="rum_post_cta_type" id="rum_post-cta-type">
-											<option selected=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
+										<td><select name="rum_post_cta_plugin_options[post_type]">
+											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
 											<?php echo rum_post_cta_association() ?>
 										</select></td>
 									</tr>
