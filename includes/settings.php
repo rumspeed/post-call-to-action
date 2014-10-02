@@ -25,6 +25,16 @@ function rum_post_cta_activate_plugin() {
 
 
 
+// Use Settings API to whitelist options
+function rum_post_cta_settings_api_init() {
+
+	register_setting( 'rum_post_cta_option_group', 'rum_post_cta_plugin_options' );
+}
+add_action( 'admin_init', 'rum_post_cta_settings_api_init');
+
+
+
+
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
 function rum_post_cta_menu() {
 
@@ -198,10 +208,13 @@ print_r($plugin_option_array);
 							<div class="inside">
 
 							<form name="rum_post_cta_options_form" method="post" action="options.php">
-	                        <input type="hidden" name="rum_post_cta_options_form_submitted" value="Y">
+<?php 
+settings_fields( 'rum_post_cta_option_group' );
+do_settings_sections( 'rum-post-cta' );
+?>								
 
-							<?php settings_fields( 'rum_post_cta_options' ); ?>
-							<?php $rum_post_cta_options = get_option( 'rum_post_cta_options_arr' ); ?>
+							<?php //settings_fields( 'rum_post_cta_options' ); ?>
+							<?php //$rum_post_cta_options = get_option( 'rum_post_cta_options_arr' ); ?>
 
 								<table class="form-table">
 									<tr valign="top">
@@ -209,7 +222,7 @@ print_r($plugin_option_array);
 										<td><fieldset>
 											<legend class="screen-reader-text"><span><?php echo __( 'Activate "Post Call-to-Action"', 'rum-post-cta-textdomain' ); ?></span></legend>
 											<label for="rum_post_cta_active">
-												<input name="rum_post_cta_options_arr[rum_post_cta_active]" type="checkbox" id="rum_post_cta_active" value="<?php echo esc_attr( $rum_post_cta_options_arr['rum_post_cta_active'] ); ?>" <?php echo $activate ?>  />
+												<input name="rum_post_cta_plugin_options[activate]" type="checkbox" value="1" <?php checked( '1', $activate_flag );            ?> />
 											</label>
 										</fieldset></td>
 									</tr>
