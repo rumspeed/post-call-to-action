@@ -78,6 +78,15 @@ function rum_post_cta_meta_box_list() {
     // execute the query
     $the_query = new WP_Query( $args );
 
+print_r($the_query);
+
+// The Loop
+while ( $the_query->have_posts() ) {
+    $the_query->the_post();
+    echo '<li>' . get_the_title() . '</li>';
+}
+
+
 // SIMILAR LOOP TO WHAT WE USED ON SETTINGS PAGE - KEEP FOR LATER
 //    foreach ( $post_types as $post_type ) {
 //
