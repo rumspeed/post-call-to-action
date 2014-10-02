@@ -9,7 +9,4 @@
 	}
 	
 	// Delete settings page options from options table
-	
-	delete_option( 'rum_post_cta_options' );
-	
-?>
+	delete_option( 'rum_post_cta_plugin_options' );
