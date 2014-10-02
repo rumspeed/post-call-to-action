@@ -2,13 +2,7 @@
 
 
 
-/*
- * POST CALL TO ACTION SETTINGS PAGE
- *
- */
-
 /* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
-
 function rum_post_cta_menu() {
 
 	// add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
@@ -27,7 +21,6 @@ add_action( 'admin_menu', 'rum_post_cta_menu' );
 
 
 /* ----- output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
-
 function rum_post_cta_association () {
 
 // TODO - get the stored value for this settings option
@@ -58,7 +51,6 @@ function rum_post_cta_association () {
 
 
 /* ----- populate the button style drop down with Bootstrap button styles ----- */
-
 function rum_post_cta_button_types() {
     $button_types = array(
         'Default',
@@ -81,9 +73,6 @@ function rum_post_cta_button_types() {
 
 
 /* ----- add color picker that can be used on the Settings screen ----- */
-
-add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
-
 function wp_enqueue_color_picker( ) {
 
 	// add the color picker css file
@@ -111,10 +100,15 @@ function wp_enqueue_color_picker( ) {
 		1
 	);
 }
+add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
 
 
 
 
+/*
+ * POST CALL TO ACTION SETTINGS PAGE
+ *
+ */
 // Display and fill the form fields for the plugin admin page
 function rum_post_cta_options_page() {
 
@@ -255,7 +249,7 @@ function rum_post_cta_options_page() {
 
 
 /* ----- show message at top of Post Call-to-Action Settings screen when settings are saved ----- */
-
+// TODO - this function name may need to be prefixed
 function change( $data ) {
 
     $message = null;
