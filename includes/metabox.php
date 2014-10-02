@@ -10,16 +10,10 @@
 /* ----- add a Post Call-to-Action meta box to New Post and Edit Post sidebars ----- */
 function rum_post_cta_meta_box_init() {
 
-    // get plugin option array and store in a variable
-    $plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+    // get activation status
+    $activated = rum_post_cta_activation_check();
 
-
-    // fetch individual values from the plugin option variable array
-    $activate_flag      = $plugin_option_array[ 'activate' ];
-    $post_type          = $plugin_option_array[ 'post_type' ];
-
-
-    if( $activate_flag != '' && $post_type != '' ) {
+    if ( $activated ) {
 
         // add_meta_box( $id, $title, $callback, $page, $context, $priority, $callback_args )
         add_meta_box(
