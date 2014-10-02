@@ -81,10 +81,13 @@ function rum_post_cta_meta_box_list() {
     $cta_post_query = new WP_Query( $args );
 
 
+// TODO - get the post meta field data for use in selected() function below
+
     // The Loop
     while ( $cta_post_query->have_posts() ) {
         $cta_post_query->the_post();
         $post_title = get_the_title();
+// TODO - change the value for comparison
         $options .= '<option value="' . $post_title . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
     }
 
