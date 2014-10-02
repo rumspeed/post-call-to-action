@@ -201,7 +201,7 @@ print_r($plugin_option_array);
 							<h3><span><?php echo __( 'Options', 'rum-post-cta-textdomain' ); ?></span></h3>
 							<div class="inside">
 
-							<form name="rum_post_cta_options_form" method="post" action="">
+							<form name="rum_post_cta_options_form" method="post" action="options.php">
 	                        <input type="hidden" name="rum_post_cta_options_form_submitted" value="Y">
 
 							<?php settings_fields( 'rum_post_cta_options' ); ?>
