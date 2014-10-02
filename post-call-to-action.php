@@ -32,6 +32,7 @@ define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 // include files - these are simply to organize functions into logical areas
 // include_once( 'includes/settings.php' );
 // include_once( 'includes/display-functions.php' );
+include_once( 'includes/metabox.php' );
 
 
 /*
