@@ -36,15 +36,13 @@ function rum_post_cta_meta_box_init() {
 add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 
 
-// https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
-
-
-// update_option( 'rum_post_cta_options', $rum_post_cta_options_arr );
 
 
 function rum_post_cta_meta_box_list() {
+// https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
 // TODO - pass through the selected rum_post_cta_association post type ----- */
+
 
 //    $option = get_option( ‘option_name’ );
 //    $option_i_want = $option[‘array_key’};
