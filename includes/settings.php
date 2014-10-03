@@ -59,10 +59,8 @@ function rum_post_cta_association () {
 	// get plugin option array and store in a variable
 	$plugin_option_array       = get_option( 'rum_post_cta_plugin_options' );
 
-
 	// fetch individual values from the plugin option variable array
 	$cta_post_type             = $plugin_option_array[ 'post_type' ];
-
 
 	// set arguments for get_post_types()
 	$args = array(
@@ -86,10 +84,11 @@ function rum_post_cta_association () {
 }
 
 
-
-
 /* ----- populate the button style drop down with Bootstrap button styles ----- */
 function rum_post_cta_button_types() {
+    $plugin_option_array    = get_option( 'rum_post_cta_plugin_options' );
+    $cta_button_types       = $plugin_option_array[ 'button_style' ];
+
     $button_types = array(
         'Default',
         'Primary',
@@ -101,7 +100,7 @@ function rum_post_cta_button_types() {
     );
 
     foreach ( $button_types as $button_type ) {
-        $buttons .= '<option value"' . $button_type . '">' . $button_type . '</option>';
+        $buttons .= '<option value"' . $button_type . '" ' .selected( $cta_button_types, $button_type ) . '>' . $button_type . '</option>';
     }
 
     return $buttons;
@@ -245,7 +244,7 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
                                         <!-- TODO -- why you no show the selected button style? -->
-										<td scope="row"><label for="rum_post_cta_button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
+										<td scope="row"><label for="rum_post_cta_button_types"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[button_style]">
 											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
                                                 <?php echo rum_post_cta_button_types() ?>
