@@ -89,8 +89,9 @@ function rum_post_cta_meta_box_list() {
     while ( $cta_post_query->have_posts() ) {
         $cta_post_query->the_post();
         $post_title = get_the_title();
+        $post_ID    = get_the_id();
 // TODO - change the value for comparison
-        $options .= '<option value="' . $post_title . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
+        $options .= '<option value="' . $post_ID . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
     }
 
 
