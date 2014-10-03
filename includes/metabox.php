@@ -89,6 +89,8 @@ add_action( 'save_post', 'rum_post_cta_meta_box_save' );
 function rum_post_cta_meta_box_list() {
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
 
+    global $post;
+
     // initialize variables
     $options             = '';
 
@@ -112,15 +114,16 @@ function rum_post_cta_meta_box_list() {
     $cta_post_query = new WP_Query( $args );
 
 
-// TODO - get the post meta field data for use in selected() function below
+    // retrieve the custom meta box value
+    $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
+
 
     // The Loop
     while ( $cta_post_query->have_posts() ) {
         $cta_post_query->the_post();
         $post_title = get_the_title();
         $post_ID    = get_the_id();
-// TODO - change the value for comparison
-        $options .= '<option value="' . $post_ID . '" ' . selected( 'VALUE FROM POST META', $post_title ) .'>' . $post_title . '</option>';
+        $options .= '<option value="' . $post_ID . '" ' . selected( $post_cta_id, $post_ID ) .'>' . $post_title . '</option>';
     }
 
 
