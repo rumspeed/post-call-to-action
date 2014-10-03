@@ -236,15 +236,16 @@ do_settings_sections( 'rum-post-cta' );
 										</fieldset></td>
 									</tr>
 									<tr valign="top">
-										<td scope="row"><label for="background_color"><?php echo __( 'Background Color', 'rum-post-cta-textdomain' ); ?></label></td>
+										<td scope="row"><label for="rum_post_cta_background_color"><?php echo __( 'Background Color', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" value="<?php echo $bg_color; ?>" /></td>
 									</tr>
 									<tr valign="top">
-										<td scope="row"><label for="text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
+										<td scope="row"><label for="rum_post_cta_text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php echo $text_color; ?>" /></td>
 									</tr>
 									<tr valign="top">
-										<td scope="row"><label for="button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
+                                        <!-- TODO -- why you no show the selected button style? -->
+										<td scope="row"><label for="rum_post_cta_button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[button_style]">
 											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
                                                 <?php echo rum_post_cta_button_types() ?>
