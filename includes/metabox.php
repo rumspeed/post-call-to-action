@@ -62,6 +62,29 @@ function rum_post_cta_meta_box_callback( $post, $box) {
 
 
 
+// save our metabox data when the post is saved
+function rum_post_cta_meta_box_save( $post_id ) {
+
+    if ( isset( $_POST['rum_post_cta_id'] ) ) {
+
+        $post_CTA_id = $_POST['rum_post_cta_id'];
+
+        // if auto saving skip saving our meta box data
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+
+        // check nonce for security
+        check_admin_referer( plugin_basename( __FILE__ ), 'rum_post_cta_meta_box_save' );
+
+        // save the meta box data as post meta using the post ID as a unique prefix
+        update_post_meta( $post_id, 'rum_post_cta_id', $post_CTA_id );
+    }
+}
+add_action( 'save_post', 'rum_post_cta_meta_box_save' );
+
+
+
 
 function rum_post_cta_meta_box_list() {
 // https://wordpress.org/support/topic/drop-down-menu-in-posts-metabox-populated-with-values-from-custom-post-type
