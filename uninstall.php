@@ -12,5 +12,5 @@
 	delete_option( 'rum_post_cta_plugin_options' );
 
 
-// TODO - remove the meta field that is stored on EACH blog post from the custom metabox
+// TODO - remove the meta_key 'rum_post_cta_id' that is stored on EACH blog post from the custom metabox
 
