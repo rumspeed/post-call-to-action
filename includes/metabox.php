@@ -38,7 +38,8 @@ function rum_post_cta_meta_box_callback( $post, $box) {
     // retrieve the custom meta box value
     $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
 
-// TODO - nonce for security
+    // nonce for security
+    wp_nonce_field( plugin_basename( __FILE__ ), 'rum_post_cta_meta_box_save' );
 
     // display a dropdown list
     ?>
