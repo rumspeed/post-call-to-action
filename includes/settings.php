@@ -237,7 +237,7 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="background_color"><?php echo __( 'Background Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" value="<?php echo $bg_color; ?>" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
