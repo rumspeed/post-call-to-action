@@ -40,7 +40,7 @@ function rum_post_cta_meta_box_callback( $post, $box) {
 
     // display a dropdown list
     ?>
-    <select name="rum_post_cta_selection" id="rum_post-cta-selection">
+    <select name="rum_post_cta_id" id="rum_post_cta_id">
         <option><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
         <?php echo rum_post_cta_meta_box_list() ?>
     </select>
