@@ -56,6 +56,10 @@ add_action( 'admin_menu', 'rum_post_cta_menu' );
 /* ----- output a list of all registered post types http://codex.wordpress.org/Function_Reference/get_post_types ----- */
 function rum_post_cta_association () {
 
+	// initialize variables
+	$options                   = '';
+
+
 	// get plugin option array and store in a variable
 	$plugin_option_array       = get_option( 'rum_post_cta_plugin_options' );
 
@@ -90,6 +94,10 @@ function rum_post_cta_association () {
 
 /* ----- populate the button style drop down with Bootstrap button styles ----- */
 function rum_post_cta_button_types() {
+
+	// initialize variables
+	$buttons                   = '';
+
     $button_types = array(
         'Default',
         'Primary',
