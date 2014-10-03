@@ -87,6 +87,11 @@ function rum_post_cta_meta_box_list() {
 
     global $post;
 
+    // store global post object for later resetting after our query
+    // using wp_reset_postdata() doesn't work so we are manually resetting the global
+    $post_old = $post;
+
+
     // initialize variables
     $options             = '';
 
@@ -97,6 +102,10 @@ function rum_post_cta_meta_box_list() {
 
     // fetch values from the plugin option variable array
     $post_cta_post_type  = $plugin_option_array[ 'post_type' ];
+
+
+    // retrieve the custom meta box value
+    $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
 
 
     // set query arguments
@@ -110,8 +119,6 @@ function rum_post_cta_meta_box_list() {
     $cta_post_query = new WP_Query( $args );
 
 
-    // retrieve the custom meta box value
-    $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
 
 
     // The Loop
@@ -124,8 +131,10 @@ function rum_post_cta_meta_box_list() {
 
 
     // restore the global $post variable of the main query loop 
-    wp_reset_postdata();
-
+    // wp_reset_postdata(); doesn't work so we are manually resetting it back
+    // restore global post object
+    $post = $post_old;
+    setup_postdata( $post );
 
     return $options;
 }
