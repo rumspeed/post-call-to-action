@@ -76,7 +76,7 @@ function rum_post_cta_association () {
 
     foreach ( $post_types as $post_type ) {
 
-// TODO - compare the value stored with the list and add "selected" to the <option> that matches
+    // compare the value stored with the list and add "selected" to the <option> that matches
         $options .= '<option value="' . $post_type . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
     }
 
@@ -243,7 +243,6 @@ do_settings_sections( 'rum-post-cta' );
 										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php echo $text_color; ?>" /></td>
 									</tr>
 									<tr valign="top">
-                                        <!-- TODO -- why you no show the selected button style? -->
 										<td scope="row"><label for="rum_post_cta_button_types"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[button_style]">
 											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
