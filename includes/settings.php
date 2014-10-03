@@ -220,14 +220,14 @@ do_settings_sections( 'rum-post-cta' );
 										</fieldset></td>
 									</tr>
 									<tr valign="top">
-										<td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association', 'rum-post-cta-textdomain' ); ?></label></td>
+                                        <td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[post_type]">
 											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
-											<?php echo rum_post_cta_association() ?>
+                                                <?php echo rum_post_cta_association() ?>
 										</select></td>
 									</tr>
 									<tr valign="top">
-										<td scope="row"><label for="rum_post_cta_image_image"><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></label></td>
+										<td scope="row"><label for="rum_post_cta_image"><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><fieldset>
 											<legend class="screen-reader-text"><span><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></span></legend>
 											<label for="rum_post_cta_featured_image">
@@ -241,18 +241,18 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php if ( isset ( $rum_post_cta_stored_meta[ 'meta-color'] ) ) echo $rum_post_cta_stored_meta['meta-color'][0]; ?>" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php echo $text_color; ?>" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_style"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[button_style]">
-											<option selected="selected" value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
-	                                            <?php echo rum_post_cta_button_types() ?>
+											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
+                                                <?php echo rum_post_cta_button_types() ?>
 										</select></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_text"><?php echo __( 'Button Text', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><input name="rum_post_cta_plugin_options[button_text]" type="text" value="<?php echo __( '', 'rum-post-cta-textdomain' ); ?>" class="button-text" /></td>
+										<td><input name="rum_post_cta_plugin_options[button_text]" type="text" value="<?php echo $button_text ?>" <?php echo __( '', 'rum-post-cta-textdomain' ); ?> class="button-text" /></td>
 									</tr>
 								</table>
 
