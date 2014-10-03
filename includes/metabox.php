@@ -35,6 +35,9 @@ add_action( 'add_meta_boxes', 'rum_post_cta_meta_box_init' );
 /* ----- output the content of the meta box ----- */
 function rum_post_cta_meta_box_callback( $post, $box) {
 
+// TODO - retrieve the custom meta box value
+// TODO - nonce for security
+
     // display a dropdown list
     ?>
     <select name="rum_post_cta_selection" id="rum_post-cta-selection">
