@@ -78,7 +78,7 @@ function rum_post_cta_association () {
     $post_types = get_post_types( $args, 'names' );
 
     // include page to the array because it was excluded in the arguments with "_builtin"
-    $post_types[page] = 'page';
+    $post_types['page'] = 'page';
 
     foreach ( $post_types as $post_type ) {
 
