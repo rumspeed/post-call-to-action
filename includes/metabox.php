@@ -94,8 +94,8 @@ function rum_post_cta_meta_box_list() {
     }
 
 
-// TODO - is this necessary?
-//    wp_reset_postdata();
+    // restore the global $post variable of the main query loop 
+    wp_reset_postdata();
 
 
     return $options;
