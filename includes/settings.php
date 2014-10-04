@@ -205,26 +205,18 @@ function rum_post_cta_options_page() {
 		this feature.', 'rum-post-cta-textdomain' ); ?></p>
 
 		<div id="poststuff">
-		
 			<div id="post-body" class="metabox-holder columns-2">
-			
 				<!-- main content -->
 				<div id="post-body-content">
-					
 					<div class="meta-box-sortables ui-sortable">
-						
 						<div class="postbox">
-
 							<h3><span><?php echo __( 'Options', 'rum-post-cta-textdomain' ); ?></span></h3>
 							<div class="inside">
-
 							<form name="rum_post_cta_options_form" method="post" action="options.php">
-
 <?php 
 settings_fields( 'rum_post_cta_option_group' );
 do_settings_sections( 'rum-post-cta' );
 ?>								
-
 								<table class="form-table">
 									<tr valign="top">
 										<td scope="row"><label for="activate_post_call_to_action"><?php echo __( 'Activate "Post Call-to-Action"', 'rum-post-cta-textdomain' ); ?></label></td>
@@ -271,46 +263,29 @@ do_settings_sections( 'rum-post-cta' );
 										<td><input type="text" name="rum_post_cta_plugin_options[button_text]" class="button-text" value="<?php echo $button_text ?>" /></td>
 									</tr>
 								</table>
-
 	                            <p class="submit">
 	                                <input type="submit" class="button-primary" value="<?php echo __( 'Save Settings', 'rum-post-cta-textdomain' ); ?>" >
 	                            </p>
-
 							</form>
 							</div> <!-- .inside -->
-						
 						</div> <!-- .postbox -->
-						
 					</div> <!-- .meta-box-sortables .ui-sortable -->
-					
 				</div> <!-- post-body-content -->
-				
 				<!-- sidebar -->
 				<div id="postbox-container-1" class="postbox-container">
-					
 					<div class="meta-box-sortables">
-						
 						<div class="postbox">
-						
 							<h3><span><?php echo __( 'About This Plugin', 'rum-post-cta-textdomain' ); ?></span></h3>
 							<div class="inside">
 								<p><?php echo __( 'Post Call to Action brought to you by ', 'rum-post-cta-textdomain' ); ?><a href="http://rumspeed.com/">Rumspeed</a>.</p>
 								<p><?php echo __( 'Because every page should DO something.', 'rum-post-cta-textdomain' ); ?></p>
 							</div> <!-- .inside -->
-							
 						</div> <!-- .postbox -->
-						
 					</div> <!-- .meta-box-sortables -->
-					
 				</div> <!-- #postbox-container-1 .postbox-container -->
-				
 			</div> <!-- #post-body .metabox-holder .columns-2 -->
-			
 			<br class="clear">
-
 		</div> <!-- #poststuff -->
-		
 	</div> <!-- .wrap -->
-
 <?php
 }
