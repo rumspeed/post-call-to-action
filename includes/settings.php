@@ -185,6 +185,7 @@ function rum_post_cta_options_page() {
     $button_style       = $plugin_option_array[ 'button_style' ];
     $button_text        = $plugin_option_array[ 'button_text' ];
 
+
 	// if activate is checked, set the value for the form field 
 	if ( $activate_flag == 1 ) {
 		$activate = ' checked';
