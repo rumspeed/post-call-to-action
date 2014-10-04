@@ -17,14 +17,14 @@ function rum_post_cta_box( $content ) {
 
     if ( $activated ) {
 
-	// checks to make sure code executes only on single 'post' pages and inside of the main Loop
-	if( is_singular('post') && is_main_query() ) {
+		// checks to make sure code executes only on single 'post' pages and inside of the main Loop
+		if( is_singular('post') && is_main_query() ) {
 
 // TODO - only proceed if there is data in the meta field for storing the CTA data from the metabox
-		$rum_post_cta_box = rum_cta_box_html();
-		$content .= $rum_post_cta_box;
+			$rum_post_cta_box = rum_cta_box_html();
+			$content .= $rum_post_cta_box;
 
-	}
+		}
 	}
 	return $content;
 }
