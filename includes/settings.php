@@ -82,7 +82,6 @@ function rum_post_cta_association () {
 
     foreach ( $post_types as $post_type ) {
 
-	    // compare the value stored with the list and add "selected" to the <option> that matches
         $options .= '<option value="' . $post_type . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
     }
 
