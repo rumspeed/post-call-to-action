@@ -20,7 +20,9 @@ function rum_post_cta_activation_check() {
 
 
     // fetch values from the plugin option variable array
-    $activate_flag      = $plugin_option_array[ 'activate' ];
+    if ( isset( $plugin_option_array[ 'activate' ] ) ) {
+        $activate_flag      = $plugin_option_array[ 'activate' ];
+    }
     $post_type          = $plugin_option_array[ 'post_type' ];
 
 
