@@ -1,7 +1,4 @@
 <?php
-
-
-
 /*
  * DISPLAY POST CALL TO ACTION BOX SINGLE POSTS
  *
