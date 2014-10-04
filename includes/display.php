@@ -9,6 +9,8 @@
 /* ----- insert CTA box below content ----- */
 function rum_post_cta_box( $content ) {
 
+	global $post;
+
     // get activation status
     $activated = rum_post_cta_activation_check();
 
@@ -17,9 +19,14 @@ function rum_post_cta_box( $content ) {
 		// checks to make sure code executes only on single 'post' pages and inside of the main Loop
 		if( is_singular('post') && is_main_query() ) {
 
-// TODO - only proceed if there is data in the meta field for storing the CTA data from the metabox
+	    // retrieve the custom meta box value
+	    $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
+
+		// only proceed if there is data in the meta field for storing the CTA data from the metabox
+		if ( $post_cta_id != '' ) {
 			$rum_post_cta_box = rum_cta_box_html();
-			$content .= $rum_post_cta_box;
+			$content .= $rum_post_cta_box;	
+		}
 
 		}
 	}
