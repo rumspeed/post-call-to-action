@@ -23,7 +23,9 @@ function rum_post_cta_activation_check() {
     if ( isset( $plugin_option_array[ 'activate' ] ) ) {
         $activate_flag      = $plugin_option_array[ 'activate' ];
     }
-    $post_type          = $plugin_option_array[ 'post_type' ];
+    if ( isset( $plugin_option_array[ 'post_type' ] ) ) {
+        $post_type          = $plugin_option_array[ 'post_type' ];
+    }
 
 
     // set the flag for use in metabox.php and display.php
