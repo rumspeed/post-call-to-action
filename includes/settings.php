@@ -175,8 +175,6 @@ function rum_post_cta_options_page() {
 	// get plugin option array and store in a variable
 	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
 
-// DISPLAY ARRAY FOR DEVELOPMENT PURPOSES 
-print_r($plugin_option_array);
 
 	// fetch individual values from the plugin option variable array
 	$activate_flag      = $plugin_option_array[ 'activate' ];
