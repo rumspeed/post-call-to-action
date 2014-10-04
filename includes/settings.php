@@ -238,8 +238,8 @@ do_settings_sections( 'rum-post-cta' );
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_type"><?php echo __( 'Post Type for CTA Association', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[post_type]">
-											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
-											<?php echo rum_post_cta_association() ?>
+												<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ) ?></option>
+												<?php echo rum_post_cta_association() ?>
 										</select></td>
 									</tr>
 									<tr valign="top">
@@ -262,7 +262,7 @@ do_settings_sections( 'rum-post-cta' );
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_button_types"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
 										<td><select name="rum_post_cta_plugin_options[button_style]">
-											<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
+												<option value=""><?php echo __( 'Make a selection...', 'rum-post-cta-textdomain' ); ?></option>
                                                 <?php echo rum_post_cta_button_types() ?>
 										</select></td>
 									</tr>
