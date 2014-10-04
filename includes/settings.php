@@ -247,7 +247,7 @@ do_settings_sections( 'rum-post-cta' );
 										<td><fieldset>
 											<legend class="screen-reader-text"><span><?php echo __( 'Display Featured Image', 'rum-post-cta-textdomain' ); ?></span></legend>
 											<label for="rum_post_cta_featured_image">
-												<input name="rum_post_cta_plugin_options[featured_image]" type="checkbox" value="1" <?php checked( '1', $featured_image ); ?>"  />
+												<input name="rum_post_cta_plugin_options[featured_image]" type="checkbox" value="1" <?php checked( '1', $featured_image ); ?> />
 											</label>
 										</fieldset></td>
 									</tr>
