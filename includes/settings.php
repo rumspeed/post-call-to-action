@@ -110,6 +110,10 @@ function rum_post_cta_button_types() {
     $cta_button_types       = $plugin_option_array[ 'button_style' ];
 
 
+	// escape data
+	$cta_button_types       = esc_attr( $cta_button_types );
+
+
     $button_types = array(
         'default',
         'primary',
