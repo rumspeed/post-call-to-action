@@ -1,15 +1,16 @@
 #rum-post-cta-box {
-    min-height: 200px;
+    min-height: 175px;
     }
 .rum-post-cta-image {
     float: left;
     margin: 20px;
-    min-width: 25%;
+    max-width: 150px;
     }
 .rum-post-cta-text h2 {
     margin-top: 20px;
     text-align: center;
     }
 .rum-post-cta-button {
+    margin-top: 15px;
     text-align: center;
     }
