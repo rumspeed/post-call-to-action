@@ -107,13 +107,13 @@ function rum_post_cta_button_types() {
 
 
     $button_types = array(
-        'Default',
-        'Primary',
-        'Success',
-        'Info',
-        'Warning',
-        'Danger',
-        'Link'
+        'default',
+        'primary',
+        'success',
+        'info',
+        'warning',
+        'danger',
+        'link'
     );
 
     foreach ( $button_types as $button_type ) {
