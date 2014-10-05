@@ -126,9 +126,9 @@ function rum_cta_featured_image( $post_cta_id ) {
 	// if the featured image field is enabled, set the output string
 	if ( $featured_image == 1 ) {
 
-		//$size = array(75,75);
-		$size = 'thumbnail';
-		$featured_image = get_the_post_thumbnail( $post_cta_id, $size );
+		//$size = 'thumbnail';
+		//$featured_image = get_the_post_thumbnail( $post_cta_id, $size );
+		$featured_image = get_the_post_thumbnail( $post_cta_id, array( 200, 175 ) );
 	}
 
 	return $featured_image;
