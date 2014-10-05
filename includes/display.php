@@ -67,12 +67,12 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// display the cta text
 	$cta_html .= '  <div class="rum-post-cta-text">';
-	$cta_html .= '		<h2>Post Title Goes Here</h2>';
+	$cta_html .= '		<h2>' . $title . '</h2>';
 	$cta_html .= '    </div>';
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
-	$cta_html .= '		CTA Button';
+	$cta_html .= '		' . $button_text;
 	$cta_html .= '	</div>';
 
 
