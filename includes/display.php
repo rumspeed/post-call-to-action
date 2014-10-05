@@ -42,13 +42,20 @@ function rum_cta_box_html( $post_cta_id ) {
 	// initialize variables
 	$cta_html      = '';
 	$featured_image = '';
-	
+	$title			= '';
+	$button_text    = '';
 
-// TODO - get the post metabox metafield that stores the post we are linking to
+
+	// get plugin option array and store in a variable
+	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+
+
 	$featured_image = rum_cta_featured_image( $post_cta_id );
+	$title			= get_the_title( $post_cta_id );;
+	$button_text    = $plugin_option_array[ 'button_text' ];
+
 
 	// display the featured image from the embedded post/page/etc.
-
 	if ( $featured_image != '' ) {
 	
 		$cta_html .= '	<div class="rum-post-cta-image">';
