@@ -41,13 +41,21 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// initialize variables
 	$cta_html      = '';
+	$featured_image = '';
+	
 
 // TODO - get the post metabox metafield that stores the post we are linking to
+	$featured_image = rum_cta_featured_image( $post_cta_id );
 
 	// display the featured image from the embedded post/page/etc.
-	$cta_html .= '	<div class="rum-post-cta-image">';
-	$cta_html .= rum_cta_featured_image( $post_cta_id );
-	$cta_html .= '	</div>';
+
+	if ( $featured_image != '' ) {
+	
+		$cta_html .= '	<div class="rum-post-cta-image">';
+		$cta_html .= $featured_image;
+		$cta_html .= '	</div>';	
+	}
+
 
 
 	// display the cta text
