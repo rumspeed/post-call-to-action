@@ -40,11 +40,12 @@ add_filter( 'the_content', 'rum_post_cta_box' );
 function rum_cta_box_html( $post_cta_id ) {
 
 	// initialize variables
-	$cta_html      = '';
+	$cta_html       = '';
 	$featured_image = '';
 	$title			= '';
 	$button_text    = '';
 	$cta_url		= '';
+
 
 	// get plugin option array and store in a variable
 	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
@@ -64,10 +65,12 @@ function rum_cta_box_html( $post_cta_id ) {
 		$cta_html .= '	</div>';	
 	}
 
+
 	// display the cta text
 	$cta_html .= '  <div class="rum-post-cta-text">';
 	$cta_html .= '		<h2>' . $title . '</h2>';
 	$cta_html .= '    </div>';
+
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
@@ -77,6 +80,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// CTA box div wrapper
 	$cta_html = '<div class="rum-post-cta-box">' . $cta_html . '</div>';
+
 
 	return $cta_html;
 }
@@ -106,8 +110,6 @@ function rum_cta_featured_image( $post_cta_id ) {
 		$size = 'thumbnail';
 		$featured_image = get_the_post_thumbnail( $post_cta_id, $size, $attr );;
 	}
-
-
 
 	return $featured_image;
 }
