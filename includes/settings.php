@@ -263,7 +263,7 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_text"><?php echo __( 'Button Text', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><input type="text" name="rum_post_cta_plugin_options[button_text]" class="button-text" value="<?php echo esc_attr( $button_text ) ?>" /></td>
+										<td><input type="text" name="rum_post_cta_plugin_options[button_text]" class="button-text" value="<?php echo esc_attr( $button_text ); ?>" /></td>
 									</tr>
 								</table>
 	                            <p class="submit">
