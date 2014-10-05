@@ -68,6 +68,10 @@ function rum_post_cta_association () {
 	$cta_post_type             = $plugin_option_array[ 'post_type' ];
 
 
+	// escape data
+	$cta_post_type             = esc_attr( $cta_post_type );
+
+
 	// set arguments for get_post_types()
 	$args = array(
 	   'public'   => true,
