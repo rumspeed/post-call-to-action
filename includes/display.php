@@ -131,3 +131,10 @@ function rum_cta_featured_image( $post_cta_id ) {
 }
 
 
+
+
+function rum_post_cta_enqueue_styles() {
+
+	wp_register_style( 'rum-post-cta-styles', RUM_POST_CTA_PLUGIN_URI . '/css/rum-post-cta.css', array(), RUM_POST_CTA_PLUGIN_VERSION, 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'rum_post_cta_enqueue_styles' );
