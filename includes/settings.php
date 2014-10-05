@@ -28,7 +28,7 @@ function rum_post_cta_activate_plugin() {
 // Use Settings API to whitelist options
 function rum_post_cta_settings_api_init() {
 
-	register_setting( 'rum_post_cta_option_group', 'rum_post_cta_plugin_options' );
+	register_setting( 'rum_post_cta_option_group', 'rum_post_cta_plugin_options', 'rum_post_cta_sanitize_options' );
 }
 add_action( 'admin_init', 'rum_post_cta_settings_api_init');
 
@@ -299,4 +299,29 @@ do_settings_sections( 'rum-post-cta' );
 		</div> <!-- #poststuff -->
 	</div> <!-- .wrap -->
 <?php
+}
+
+
+function rum_post_cta_sanitize_options( $input ) {
+
+	// start with clear array
+	$valid = array();
+
+	$valid['activate']          = $input['activate'];
+	$valid['post_type']         = $input['post_type'];
+	$valid['featured_image']    = $input['featured_image'];
+
+// TODO validate color options
+	$valid['bg_color']          = $input['bg_color'];
+	$valid['text_color']        = $input['text_color'];
+
+
+	$valid['button_style']      = $input['button_style'];
+
+// TODO validate value as text; no HTML
+	$valid['button_text']       = $input['button_text'];
+
+
+	// return array
+	return $valid;
 }
