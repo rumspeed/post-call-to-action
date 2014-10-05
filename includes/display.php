@@ -121,7 +121,7 @@ function rum_cta_featured_image( $post_cta_id ) {
 
 		//$size = array(75,75);
 		$size = 'thumbnail';
-		$featured_image = get_the_post_thumbnail( $post_cta_id, $size, $attr );;
+		$featured_image = get_the_post_thumbnail( $post_cta_id, $size );
 	}
 
 	return $featured_image;
