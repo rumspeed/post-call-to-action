@@ -45,6 +45,10 @@ function rum_cta_box_html( $post_cta_id ) {
 	$title			= '';
 	$button_text    = '';
 	$cta_url		= '';
+	$box_style		= '';
+    $bg_color       = '';
+    $text_color     = '';
+    $button_style   = '';
 
 
 	// get plugin option array and store in a variable
@@ -55,6 +59,9 @@ function rum_cta_box_html( $post_cta_id ) {
 	$title			= get_the_title( $post_cta_id );;
 	$button_text    = $plugin_option_array[ 'button_text' ];
 	$cta_url		= get_permalink( $post_cta_id );
+    $bg_color       = $plugin_option_array[ 'bg_color' ];
+    $text_color     = $plugin_option_array[ 'text_color' ];
+    $button_style   = $plugin_option_array[ 'button_style' ];
 
 
 	// display the featured image from the embedded post/page/etc.
