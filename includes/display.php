@@ -62,7 +62,7 @@ function rum_cta_box_html() {
 
 
 	// CTA box div wrapper
-	$cta_html .= '<div class="rum-post-cta-box">' . $cta_html . '</div>';
+	$cta_html = '<div class="rum-post-cta-box">' . $cta_html . '</div>';
 
 	return $cta_html;
 }
