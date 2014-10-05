@@ -248,11 +248,11 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_background_color"><?php echo __( 'Background Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" value="<?php echo $bg_color; ?>" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[bg_color]" class="color-picker" value="<?php echo esc_attr( $bg_color ); ?>" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_text_color"><?php echo __( 'Text Color', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php echo $text_color; ?>" /></td>
+										<td class="post-cta-color-field"><input type="text" name="rum_post_cta_plugin_options[text_color]" class="color-picker" value="<?php echo esc_attr( $text_color ); ?>" /></td>
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="rum_post_cta_button_types"><?php echo __( 'Button Style', 'rum-post-cta-textdomain' ); ?></label></td>
@@ -263,7 +263,7 @@ do_settings_sections( 'rum-post-cta' );
 									</tr>
 									<tr valign="top">
 										<td scope="row"><label for="button_text"><?php echo __( 'Button Text', 'rum-post-cta-textdomain' ); ?></label></td>
-										<td><input type="text" name="rum_post_cta_plugin_options[button_text]" class="button-text" value="<?php echo $button_text ?>" /></td>
+										<td><input type="text" name="rum_post_cta_plugin_options[button_text]" class="button-text" value="<?php echo esc_attr( $button_text ) ?>" /></td>
 									</tr>
 								</table>
 	                            <p class="submit">
