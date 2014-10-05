@@ -46,7 +46,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// display the featured image from the embedded post/page/etc.
 	$cta_html .= '	<div class="rum-post-cta-image">';
-	$cta_html .= '     Image goes here';
+	$cta_html .= rum_cta_featured_image( $post_cta_id );
 	$cta_html .= '	</div>';
 
 
@@ -66,4 +66,36 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	return $cta_html;
 }
+
+
+
+
+function rum_cta_featured_image( $post_cta_id ) {
+
+	// initialize variables
+	$featured_image     = '';
+	$size               = '';
+
+
+	// get plugin option array and store in a variable
+	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+
+
+	// fetch individual values from the plugin option variable array
+    $featured_image     = $plugin_option_array[ 'featured_image' ];
+
+
+	// if the featured image field is enabled, set the output string
+	if ( $featured_image == 1 ) {
+
+		//$size = array(75,75);
+		$size = 'thumbnail';
+		$featured_image = get_the_post_thumbnail( $post_cta_id, $size, $attr );;
+	}
+
+
+
+	return $featured_image;
+}
+
 
