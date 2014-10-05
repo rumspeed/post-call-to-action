@@ -23,6 +23,10 @@ function rum_post_cta_box( $content ) {
 		    $post_cta_id = get_post_meta( $post->ID, 'rum_post_cta_id', true );
 
 
+		    // enqueue registered stylesheet
+			wp_enqueue_style( 'rum-post-cta-styles' );
+
+
 			// only proceed if there is data in the meta field for storing the CTA data from the metabox
 			if ( $post_cta_id != '' ) {
 				$rum_post_cta_box = rum_cta_box_html( $post_cta_id );
