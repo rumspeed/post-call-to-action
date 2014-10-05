@@ -25,7 +25,7 @@ function rum_post_cta_box( $content ) {
 
 			// only proceed if there is data in the meta field for storing the CTA data from the metabox
 			if ( $post_cta_id != '' ) {
-				$rum_post_cta_box = rum_cta_box_html();
+				$rum_post_cta_box = rum_cta_box_html( $post_cta_id );
 				$content .= $rum_post_cta_box;	
 			}
 		}
@@ -37,7 +37,7 @@ add_filter( 'the_content', 'rum_post_cta_box' );
 
 
 
-function rum_cta_box_html() {
+function rum_cta_box_html( $post_cta_id ) {
 
 	// initialize variables
 	$cta_html      = '';
