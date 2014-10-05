@@ -70,6 +70,9 @@ function rum_cta_box_html( $post_cta_id ) {
 	$box_style .= 'border: 2px solid ' . $text_color . ';';
 
 
+	// format button style
+	$button_style = 'class="btn btn-' . $button_style . '"';
+
 	// display the featured image from the embedded post/page/etc.
 	if ( $featured_image != '' ) {
 	
@@ -87,7 +90,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
-	$cta_html .= '		<a href="' . $cta_url . '">' . $button_text . '</a>';
+	$cta_html .= '		<a href="' . $cta_url . '"' . $button_style . '>' . $button_text . '</a>';
 	$cta_html .= '	</div>';
 
 
