@@ -64,6 +64,12 @@ function rum_cta_box_html( $post_cta_id ) {
     $button_style   = $plugin_option_array[ 'button_style' ];
 
 
+    // format style for CTA box
+	$box_style .= 'background:' . $bg_color . ';';
+	$box_style .= 'color:' . $text_color . ';';
+	$box_style .= 'border: 2px solid ' . $text_color . ';';
+
+
 	// display the featured image from the embedded post/page/etc.
 	if ( $featured_image != '' ) {
 	
@@ -86,7 +92,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 
 	// CTA box div wrapper
-	$cta_html = '<div class="rum-post-cta-box">' . $cta_html . '</div>';
+	$cta_html = '<div class="rum-post-cta-box" style="' . $box_style . '">' . $cta_html . '</div>';
 
 
 	return $cta_html;
