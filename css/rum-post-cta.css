@@ -1,33 +1,15 @@
+#rum-post-cta-box {
+    min-height: 200px;
+    }
 .rum-post-cta-image {
     float: left;
-    margin: 2em;
-}
-.rum-post-cta-box {
-    background: #bbbbbb;
-    border: 3px solid #000000;
-}
-
-.rum-post-cta-background-color {
-    background: #0044cc;
-}
-
-.rum-post-cta-text {
-    font-size: 1.3em;
-}
-
-.rum-post-cta-text-color {
-    color: #232323;
-    font-size: 1.2em;
-}
-
-.rum-post-cta-button-style {
-
-}
-
-.rum-post-cta-button-text {
-    font-weight: 300;
-}
-
-.rum-post-cta-button-text-color {
-    background: #ff853c;
-}
+    margin: 20px;
+    min-width: 25%;
+    }
+.rum-post-cta-text h2 {
+    margin-top: 20px;
+    text-align: center;
+    }
+.rum-post-cta-button {
+    text-align: center;
+    }
