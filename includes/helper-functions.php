@@ -37,3 +37,22 @@ function rum_post_cta_activation_check() {
 
     return $status;
 }
+
+
+
+
+// validate a hex color
+function rum_post_cta_validate_color( $color ) {
+
+    // initialize variables
+    $valid_color = '';
+
+    // must start with '#' and have 6 characters including a-f and 0-9
+    if( preg_match('/^#[a-f0-9]{6}$/i', $color) ) { //hex color is valid 
+
+        // data is a valid color
+        $valid_color = $color;
+    }
+
+    return $valid_color;
+}
