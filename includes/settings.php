@@ -318,8 +318,7 @@ function rum_post_cta_sanitize_options( $input ) {
 
 	$valid['button_style']      = $input['button_style'];
 
-// TODO validate value as text; no HTML
-	$valid['button_text']       = $input['button_text'];
+	$valid['button_text']       = sanitize_text_field( $input['button_text'] );
 
 
 	// return array
