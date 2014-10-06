@@ -56,16 +56,16 @@ function rum_cta_box_html( $post_cta_id ) {
 
 
 	// get plugin option array and store in a variable
-	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+	$plugin_option_array  = get_option( 'rum_post_cta_plugin_options' );
 
 
-	$featured_image = rum_cta_featured_image( $post_cta_id );
-	$title			= get_the_title( $post_cta_id );;
-	$button_text    = $plugin_option_array[ 'button_text' ];
-	$cta_url		= get_permalink( $post_cta_id );
-    $bg_color       = $plugin_option_array[ 'bg_color' ];
-    $text_color     = $plugin_option_array[ 'text_color' ];
-    $button_style   = $plugin_option_array[ 'button_style' ];
+	$featured_image       = rum_cta_featured_image( $post_cta_id );
+	$title			      = get_the_title( $post_cta_id );;
+	$button_text          = $plugin_option_array[ 'button_text' ];
+	$cta_url		      = get_permalink( $post_cta_id );
+    $bg_color             = $plugin_option_array[ 'bg_color' ];
+    $text_color           = $plugin_option_array[ 'text_color' ];
+    $button_style         = $plugin_option_array[ 'button_style' ];
 
 
     // format style for CTA box
