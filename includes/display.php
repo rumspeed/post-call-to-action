@@ -116,11 +116,11 @@ function rum_cta_featured_image( $post_cta_id ) {
 
 
 	// get plugin option array and store in a variable
-	$plugin_option_array            = get_option( 'rum_post_cta_plugin_options' );
+	$plugin_option_array = get_option( 'rum_post_cta_plugin_options' );
 
 
 	// fetch individual values from the plugin option variable array
-    $featured_image     = $plugin_option_array[ 'featured_image' ];
+    $featured_image      = $plugin_option_array[ 'featured_image' ];
 
 
 	// if the featured image field is enabled, set the output string
