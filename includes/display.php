@@ -75,7 +75,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 
 	// format button style
-	$button_style = 'class="btn btn-' . $button_style . '"'; // optional size value: 'btn-lg'
+	$button_style = 'class="cta-btn cta-btn-' . $button_style . '"'; // optional size value: 'btn-lg'
 
 	// display the featured image from the embedded post/page/etc.
 	if ( $featured_image != '' ) {
