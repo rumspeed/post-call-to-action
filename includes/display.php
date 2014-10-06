@@ -71,7 +71,7 @@ function rum_cta_box_html( $post_cta_id ) {
     // format style for CTA box
 	$box_style .= 'background:' . $bg_color . ';';
 	$box_style .= 'color:' . $text_color . ';';
-	$box_style .= 'border: 2px solid ' . $text_color . ';';
+	$box_style .= 'border: 1px solid ' . $text_color . ';';
 
 
 	// format button style
