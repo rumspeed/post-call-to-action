@@ -307,17 +307,14 @@ function rum_post_cta_sanitize_options( $input ) {
 	// start with clear array
 	$valid = array();
 
+
+	// validation/sanitize
 	$valid['activate']          = $input['activate'];
 	$valid['post_type']         = $input['post_type'];
 	$valid['featured_image']    = $input['featured_image'];
-
-// TODO validate color options
 	$valid['bg_color']          = rum_post_cta_validate_color( $input['bg_color'] );
 	$valid['text_color']        = rum_post_cta_validate_color( $input['text_color'] );
-
-
 	$valid['button_style']      = $input['button_style'];
-
 	$valid['button_text']       = sanitize_text_field( $input['button_text'] );
 
 
