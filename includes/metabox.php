@@ -64,7 +64,7 @@ function rum_post_cta_meta_box_save( $post_id ) {
 
     if ( isset( $_POST['rum_post_cta_id'] ) ) {
 
-        $post_CTA_id = $_POST['rum_post_cta_id'];
+        $post_CTA_id = absint( $_POST['rum_post_cta_id'] );
 
         // if auto saving skip saving our meta box data
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
