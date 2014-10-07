@@ -126,7 +126,7 @@ function rum_post_cta_meta_box_list() {
         $cta_post_query->the_post();
         $post_title = get_the_title();
         $post_ID    = get_the_id();
-        $options .= '<option value="' . $post_ID . '" ' . selected( $post_cta_id, $post_ID ) .'>' . $post_title . '</option>';
+        $options .= '<option value="' . esc_attr( $post_ID ) . '" ' . selected( $post_cta_id, $post_ID ) .'>' . $post_title . '</option>';
     }
 
 
