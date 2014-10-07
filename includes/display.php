@@ -75,7 +75,7 @@ function rum_cta_box_html( $post_cta_id ) {
 
 
 	// format button style
-	$button_style = 'class="cta-btn cta-btn-' . $button_style . '"'; // optional size value: 'btn-lg'
+	$button_style = 'class="cta-btn cta-btn-' . esc_attr( $button_style ) . '"'; // optional size value: 'btn-lg'
 
 	// display the featured image from the embedded post/page/etc.
 	if ( $featured_image != '' ) {
@@ -94,12 +94,12 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
-	$cta_html .= '		<a href="' . $cta_url . '"' . $button_style . '>' . $button_text . '</a>';
+	$cta_html .= '		<a href="' . esc_url( $cta_url ) . '"' . $button_style . '>' . $button_text . '</a>';
 	$cta_html .= '	</div>';
 
 
 	// CTA box div wrapper
-	$cta_html = '<div id="rum-post-cta-box" style="' . $box_style . '">' . $cta_html . '</div>';
+	$cta_html = '<div id="rum-post-cta-box" style="' . esc_attr( $box_style ) . '">' . $cta_html . '</div>';
 
 
 	return $cta_html;
