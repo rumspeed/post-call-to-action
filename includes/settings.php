@@ -86,7 +86,7 @@ function rum_post_cta_association () {
 
     foreach ( $post_types as $post_type ) {
 
-        $options .= '<option value="' . $post_type . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
+        $options .= '<option value="' . esc_attr( $post_type ) . '" ' . selected( $cta_post_type, $post_type ) .'>' . $post_type . '</option>';
     }
 
     return $options;
@@ -125,7 +125,7 @@ function rum_post_cta_button_types() {
     );
 
     foreach ( $button_types as $button_type ) {
-        $buttons .= '<option value"' . $button_type . '" ' . selected( $cta_button_types, $button_type ) . '>' . $button_type . '</option>';
+        $buttons .= '<option value"' . esc_attr( $button_type ) . '" ' . selected( $cta_button_types, $button_type ) . '>' . $button_type . '</option>';
     }
 
     return $buttons;
