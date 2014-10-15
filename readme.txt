@@ -8,7 +8,7 @@ Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Increase online conversions with a "Call to Action" bar at the bottom of your blog posts. Customize the button text and colors. It's that simple.
+Increase online conversions with a "Call to Action" bar at the bottom of your blog posts. Customize the button text and colors.
 
 == Description ==
 
