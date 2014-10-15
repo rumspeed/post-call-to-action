@@ -3,7 +3,7 @@ Contributors: srumery
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RYGE4PYK68H54
 Tags: call to action, navigation, admin, page link, SEO
 Requires at least: 3.0
-Tested up to: 0.3.2
+Tested up to: 4.0
 Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
