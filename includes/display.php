@@ -86,6 +86,10 @@ function rum_cta_box_html( $post_cta_id ) {
 	}
 
 
+	// wrap rum-post-cta-text and rum-post-cta-button
+	$cta_html .= '<div class="rum-post-cta-meta">';
+
+
 	// display the cta text
 	$cta_html .= '  <div class="rum-post-cta-text">';
 	$cta_html .= '		<h2>' . $title . '</h2>';
@@ -98,8 +102,17 @@ function rum_cta_box_html( $post_cta_id ) {
 	$cta_html .= '	</div>';
 
 
+	// close the wrapper for rum-post-cta-text and rum-post-cta-button
+	$cta_html .= '</div>';
+
+
+
 	// CTA box div wrapper
 	$cta_html = '<div id="rum-post-cta-box" style="' . esc_attr( $box_style ) . '">' . $cta_html . '</div>';
+
+
+	// clear the float of the main container
+	$cta_html .= '<div class="rum-post-cta-clearfix"></div>';
 
 
 	return $cta_html;
