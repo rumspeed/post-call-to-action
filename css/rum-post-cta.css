@@ -1,6 +1,11 @@
 #rum-post-cta-box {
     min-height: 125px;
     margin-bottom: 40px;
+    float: left;
+    width: 100%;
+    }
+.rum-post-cta-clearfix {
+    clear: both;
     }
 .rum-post-cta-image {
     float: left;
