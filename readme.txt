@@ -3,8 +3,8 @@ Contributors: srumery
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RYGE4PYK68H54
 Tags: call to action, navigation, admin, page link, SEO
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 0.3.4
+Tested up to: 4.5.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,7 @@ It's easy to use and simple to set up. From one simple settings screen, you can:
 1. Upload `post-call-to-action` folder to the `/wp-content/plugins/` directory
 1. In your WordPress administration, go to the Plugins page
 1. Activate the "Post Call to Action" plugin
-1. Go to the Settings > Post CTA and configure your settings
+1. Go to the Settings > Post Call to Action and configure your settings
 
 If you find any bugs or have ideas to make it better, please let us know.
 
@@ -48,9 +48,14 @@ If you find any bugs or have ideas to make it better, please let us know.
 
 == Changelog ==
 
+= 1.0.0 =
+* FIX: improved CSS to stabilize the display whether an image is used or not
+* FIX: text in H2 now has color from settings page
+* FIX: button text was not using proper color in some cases
+
 = 0.3.4 =
-* new css classes for CTA meta; includes post title and button 
-* FIX: better handleing of the featured image to avoid images being cropped
+* NEW: css classes for CTA meta; includes post title and button 
+* FIX: better handling of the featured image to avoid images being cropped
 
 = 0.3.3 =
 * FIX: Post CTA box was displaying without a selected post when initial post meta value was '0'
@@ -60,7 +65,7 @@ If you find any bugs or have ideas to make it better, please let us know.
 Hat tip to Pippin Williamson for his pull request to improve this plugin. He has a plugin review program for members of his website. See http://pippinsplugins.com/ for details.
 
 = 0.3.1 =
-* new css classes for buttons
+* NEW: css classes for buttons
 
 = 0.3.0 =
 * Initial plugin release
