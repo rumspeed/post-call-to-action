@@ -35,13 +35,13 @@ add_action( 'admin_init', 'rum_post_cta_settings_api_init');
 
 
 
-/* ----- add a link to the plugin in the admin menu under 'Settings > Post CTA' ----- */
+/* ----- add a link to the plugin in the admin menu under 'Settings > Post Call to Action' ----- */
 function rum_post_cta_menu() {
 
 	// add_options_page( $page_title, $menu_title, $capability, $menu-slug, $function )
 	add_options_page(
 		'Post Call to Action',
-		'Post CTA',
+		'Post Call to Action',
 		'manage_options',
 		'rum-post-cta',
 		'rum_post_cta_options_page'
