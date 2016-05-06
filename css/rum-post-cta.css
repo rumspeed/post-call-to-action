@@ -1,19 +1,21 @@
 #rum-post-cta-box {
-    min-height: 125px;
-    margin-bottom: 40px;
-    float: left;
     width: 100%;
+    min-height: 150px;
+    margin: 25px 0 10px;
+    padding: 20px;
     }
 .rum-post-cta-clearfix {
     clear: both;
     }
 .rum-post-cta-image {
-    float: left;
-    margin: 15px;
-    max-width: 150px;
+    position: absolute;
+    }
+.rum-post-cta-img {
+    max-height: 110px;
+    width: inherit;
     }
 .rum-post-cta-text h2 {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
     }
 .rum-post-cta-button {
