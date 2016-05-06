@@ -28,7 +28,7 @@ function rum_post_cta_box( $content ) {
 
 
 			// only proceed if there is data in the meta field for storing the CTA data from the metabox
-			if ( $post_cta_id != '' ) {
+			if ( $post_cta_id != '' && $post_cta_id != '0' ) {
 				$rum_post_cta_box = rum_cta_box_html( $post_cta_id );
 				$content .= $rum_post_cta_box;	
 			}
@@ -53,7 +53,7 @@ function rum_cta_box_html( $post_cta_id ) {
     $bg_color       = '';
     $text_color     = '';
     $button_style   = '';
-
+	$button_text_color = '';
 
 	// get plugin option array and store in a variable
 	$plugin_option_array  = get_option( 'rum_post_cta_plugin_options' );
@@ -74,6 +74,16 @@ function rum_cta_box_html( $post_cta_id ) {
 	$box_style .= 'border: 1px solid ' . $text_color . ';';
 
 
+	// create inline style for button text
+	if ( $button_style == 'default' ) {
+
+		$button_text_color = '#333';
+	} else {
+
+		$button_text_color = '#fff';
+	}
+
+
 	// format button style
 	$button_style = 'class="cta-btn cta-btn-' . esc_attr( $button_style ) . '"'; // optional size value: 'btn-lg'
 
@@ -86,20 +96,33 @@ function rum_cta_box_html( $post_cta_id ) {
 	}
 
 
+	// wrap rum-post-cta-text and rum-post-cta-button
+	$cta_html .= '<div class="rum-post-cta-meta">';
+
+
 	// display the cta text
 	$cta_html .= '  <div class="rum-post-cta-text">';
-	$cta_html .= '		<h2>' . $title . '</h2>';
+	$cta_html .= '		<h2 style="color:' . $text_color . '">' . $title . '</h2>';
 	$cta_html .= '    </div>';
 
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
-	$cta_html .= '		<a href="' . esc_url( $cta_url ) . '"' . $button_style . '>' . $button_text . '</a>';
+	$cta_html .= '		<a href="' . esc_url( $cta_url ) . '"' . $button_style . ' style="color:' . $button_text_color . '">' . $button_text . '</a>';
 	$cta_html .= '	</div>';
+
+
+	// close the wrapper for rum-post-cta-text and rum-post-cta-button
+	$cta_html .= '</div>';
+
 
 
 	// CTA box div wrapper
 	$cta_html = '<div id="rum-post-cta-box" style="' . esc_attr( $box_style ) . '">' . $cta_html . '</div>';
+
+
+	// clear the float of the main container
+	$cta_html .= '<div class="rum-post-cta-clearfix"></div>';
 
 
 	return $cta_html;
@@ -126,9 +149,8 @@ function rum_cta_featured_image( $post_cta_id ) {
 	// if the featured image field is enabled, set the output string
 	if ( $featured_image == 1 ) {
 
-		//$size = 'thumbnail';
-		//$featured_image = get_the_post_thumbnail( $post_cta_id, $size );
-		$featured_image = get_the_post_thumbnail( $post_cta_id, array( 200, 175 ) );
+		$size = 'medium';
+		$featured_image = get_the_post_thumbnail( $post_cta_id, $size, array( 'class' => 'rum-post-cta-img' ) );
 	}
 
 	return $featured_image;

@@ -2,13 +2,13 @@
 /*
 Plugin Name: Post Call to Action
 Description: Every page should do something. Display a call to action bar below each blog post.
-Version: 0.3.2
+Version: 1.0.0
 Author: Scot Rumery
 Author URI: http://rumspeed.com/scot-rumery/
 License: GPLv2
 */
 
-/*  Copyright 2014  Scot Rumery (email : scot@rumspeed.com)
+/*  Copyright 2015-2016  Scot Rumery (email : scot@rumspeed.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ License: GPLv2
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'RUM_POST_CTA_PLUGIN_VERSION', '0.3.2' );
+define( 'RUM_POST_CTA_PLUGIN_VERSION', '1.0.0' );
 define( 'RUM_POST_CTA_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'RUM_POST_CTA_PLUGIN_URI', plugins_url( '' , __FILE__ ) );
 
