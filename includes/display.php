@@ -53,7 +53,7 @@ function rum_cta_box_html( $post_cta_id ) {
     $bg_color       = '';
     $text_color     = '';
     $button_style   = '';
-
+	$button_text_color = '';
 
 	// get plugin option array and store in a variable
 	$plugin_option_array  = get_option( 'rum_post_cta_plugin_options' );
@@ -74,6 +74,16 @@ function rum_cta_box_html( $post_cta_id ) {
 	$box_style .= 'border: 1px solid ' . $text_color . ';';
 
 
+	// create inline style for button text
+	if ( $button_style == 'default' ) {
+
+		$button_text_color = '#333';
+	} else {
+
+		$button_text_color = '#fff';
+	}
+
+
 	// format button style
 	$button_style = 'class="cta-btn cta-btn-' . esc_attr( $button_style ) . '"'; // optional size value: 'btn-lg'
 
@@ -92,13 +102,13 @@ function rum_cta_box_html( $post_cta_id ) {
 
 	// display the cta text
 	$cta_html .= '  <div class="rum-post-cta-text">';
-	$cta_html .= '		<h2>' . $title . '</h2>';
+	$cta_html .= '		<h2 style="color:' . $text_color . '">' . $title . '</h2>';
 	$cta_html .= '    </div>';
 
 
 	// display the cta button
 	$cta_html .= '	<div class="rum-post-cta-button">';
-	$cta_html .= '		<a href="' . esc_url( $cta_url ) . '"' . $button_style . '>' . $button_text . '</a>';
+	$cta_html .= '		<a href="' . esc_url( $cta_url ) . '"' . $button_style . ' style="color:' . $button_text_color . '">' . $button_text . '</a>';
 	$cta_html .= '	</div>';
 
 
@@ -140,7 +150,7 @@ function rum_cta_featured_image( $post_cta_id ) {
 	if ( $featured_image == 1 ) {
 
 		$size = 'medium';
-		$featured_image = get_the_post_thumbnail( $post_cta_id, $size );
+		$featured_image = get_the_post_thumbnail( $post_cta_id, $size, array( 'class' => 'rum-post-cta-img' ) );
 	}
 
 	return $featured_image;
