@@ -2,9 +2,9 @@
 Contributors: srumery
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RYGE4PYK68H54
 Tags: call to action, navigation, admin, page link, SEO
-Requires at least: 3.0
-Tested up to: 4.5.1
-Stable tag: 1.0.0
+Requires at least: 4.6
+Tested up to: 4.9
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ If you find any bugs or have ideas to make it better, please let us know.
 1. call to action bar
 
 == Changelog ==
+
+= 1.0.1 =
+* Tested up to WP v4.9
 
 = 1.0.0 =
 * FIX: improved CSS to stabilize the display whether an image is used or not
